@@ -1,0 +1,50 @@
+- Socket disconnect event
+- 165 for pets not implemented
+- 0 after 109 (probably because of names)
+- Names have something after them???
+- Lookout visit in player not filled in
+- Save time after each trial
+- Handle trial innocent
+- Mediums can talk to each other at night
+
+priority order
+
+ESCORT
+FRAMER
+DOCTOR
+GODFATHER/MAFIOSO
+SERIAL KILLER
+TK
+INVESTIGATOR/SHERIFF
+JAILOR???
+LOOKOUT
+
+Bodyguard
+DOCTOR - done
+ESCORT - done
+Executioner
+FRAMER - done
+GODFATHER
+INVESTIGATOR - done
+JAILOR - needs execute command
+Jester
+Lookout - done
+MAFIOSO
+Mayor
+Medium - needs seance and mediums can talk to each other at night
+Retributionist - not gonna bother
+SerialKiller - needs to be tested
+SHERIFF - done (except for werewolf on full moon)
+Spy
+Transporter
+Veteran - needs defense on alert
+Vigilante
+
+_loc6_.StartKilledByMessageTimer(3000);
+will = 5
+
+3000
+3000
+3000 - if will
+(5000)
+3000
