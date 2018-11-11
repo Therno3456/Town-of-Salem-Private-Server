@@ -5,6 +5,7 @@ class Sheriff extends Player {
 	constructor(client) {
 		super(client);
 		this.priority = 2;
+		this.setFaction('TOWN');
 	}
 	role() {
 		if(this.canPerformRole()) {

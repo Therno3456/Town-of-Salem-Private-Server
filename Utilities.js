@@ -17,6 +17,9 @@ class Utilities {
         
         return array;
     }
+    static random(array) {
+        return array[Math.floor(Math.random()*array.length)];
+    }
 }
 
 module.exports = Utilities;

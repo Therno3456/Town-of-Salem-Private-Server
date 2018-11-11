@@ -10,6 +10,8 @@ function startLastWords() {
         players.sendToAll(u.code(147) + u.code(0));
         setTimeout(function() {
             TownOfSalem.getGame().setState(States.DISCUSSION);
+            require('./HasExecutionerWon')(p);
+            require('./WasJesterLynched')(p);
             require('./WhoDiedAndHow')(p).then(function() {
                 require('./StartNightTransition')();
             });

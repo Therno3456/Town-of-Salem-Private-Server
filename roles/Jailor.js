@@ -5,6 +5,7 @@ class Jailor extends Player {
 	constructor(client) {
 		super(client);
 		this.priority = 4;
+		this.setFaction('TOWN');
 	}
 	role() {
 		

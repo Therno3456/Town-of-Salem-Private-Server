@@ -4,6 +4,7 @@ class Doctor extends Player {
 	constructor(client) {
 		super(client);
 		this.priority = 1;
+		this.setFaction('TOWN');
 	}
 	role() {
 		if(this.canPerformRole())

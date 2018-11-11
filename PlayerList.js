@@ -1,7 +1,8 @@
 const ClientList = require('./ClientList.js');
 const mode = require('./gamemodes/Classic');
 const RoleBuilder = require('./RoleBuilder.js');
-const State = require('./States.js');
+const Factions = require('./Factions.js');
+const u = require('./Utilities.js');
 
 class PlayerList {
 	constructor() {
@@ -44,6 +45,24 @@ class PlayerList {
 				dead.push(this.clients[x]);
 		}
 		return dead;
+	}
+	getExecutionerTarget() {
+		let town = [];
+		for(var x=0;x<this.clients.length;x++) {
+			if(this.clients[x].faction == Factions.TOWN)
+				town.push(this.clients[x]);
+		}
+		return u.random(town);
+	}
+	getAllOfRole(role) {
+		let roles = [];
+		for(var x=0;x<this.clients.length;x++) {
+			let p = this.clients[x];
+			if(p.getClassName() == role) {
+				roles.push(p);
+			}
+		}
+		return roles;
 	}
 	numberOfPlayers() {
 		return this.clients.length;
@@ -129,7 +148,6 @@ class PlayerList {
 		this.sorted = [...this.clients].sort(function(p1, p2) {
 			return p1.priority > p2.priority;
 		});
-		console.log(this.sorted);
 	}
 	getMafiaMembers() {
 		let mafia = [];

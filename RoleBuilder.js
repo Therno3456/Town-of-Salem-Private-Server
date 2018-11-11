@@ -56,9 +56,9 @@ function getRole(index) {
 		case 25:
 			return 'Arsonist';
 		case 26:
-			return 'Executioner';
+			return roles.Executioner;
 		case 27:
-			return 'Jester';
+			return roles.Jester
 		case 28:
 			return roles.SerialKiller;
 		case 29:

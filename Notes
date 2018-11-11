@@ -16,13 +16,13 @@ GODFATHER/MAFIOSO
 SERIAL KILLER
 TK
 INVESTIGATOR/SHERIFF
-JAILOR???
+JAILOR
 LOOKOUT
 
 Bodyguard
 DOCTOR - done
 ESCORT - done
-Executioner
+Executioner - needs to turn into jester when target killed
 FRAMER - done
 GODFATHER
 INVESTIGATOR - done
@@ -32,13 +32,13 @@ Lookout - done
 MAFIOSO
 Mayor
 Medium - needs seance and mediums can talk to each other at night
-Retributionist - not gonna bother
-SerialKiller - needs to be tested
+Retributionist
+SerialKiller - null target if role blocked
 SHERIFF - done (except for werewolf on full moon)
 Spy
 Transporter
 Veteran - needs defense on alert
-Vigilante
+Vigilante - suicide message wrong, can shoot n1
 
 _loc6_.StartKilledByMessageTimer(3000);
 will = 5
@@ -48,3 +48,7 @@ will = 5
 3000 - if will
 (5000)
 3000
+
+Vig killing town 158
+
+17 for will

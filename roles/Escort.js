@@ -4,6 +4,7 @@ class Escort extends Player {
 	constructor(client) {
 		super(client);
 		this.priority = 0;
+		this.setFaction('TOWN');
 	}
 	role() {
 		if(this.canPerformRole()) {

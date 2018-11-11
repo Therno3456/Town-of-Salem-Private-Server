@@ -5,6 +5,7 @@ class Lookout extends Player {
 	constructor(client) {
 		super(client);
 		this.priority = 5;
+		this.setFaction('TOWN');
 	}
 	role() {
 		if(this.canPerformRole()) {

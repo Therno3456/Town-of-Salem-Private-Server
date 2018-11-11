@@ -5,6 +5,7 @@ class Mafioso extends Player {
 		super(client);
 		this.mafia = true;
 		this.priority = 3;
+		this.setFaction('MAFIA');
 	}
 	role() {
 		if(this.canPerformRole())

@@ -5,6 +5,7 @@ class Veteran extends Player{
 	constructor(client) {
 		super(client);
 		this.priority = 6;
+		this.setFaction('TOWN');
 	}
 	role() {
 		let visits = this.getVisits();

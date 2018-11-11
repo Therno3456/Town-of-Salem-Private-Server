@@ -1,5 +1,6 @@
 const Client = require('./Client.js');
 const u = require('./Utilities.js');
+const Factions = require('./Factions.js');
 
 class Player extends Client {
 	constructor(client) {
@@ -100,6 +101,12 @@ class Player extends Client {
 			this.killer = who;
 			this.addMessage(u.code(106) + u.code(0));
 		}
+	}
+	setFaction(faction) {
+		this.faction = Factions[faction];
+	}
+	getFaction() {
+		return this.faction;
 	}
 }
 
