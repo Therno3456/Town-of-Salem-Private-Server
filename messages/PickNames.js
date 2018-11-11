@@ -17,10 +17,10 @@ function pickNames() {
         require('./RoleAndPosition')();
         require('./SendMafiaMembers')();
         require('./TellRoleList')();
-        setTimeout(function() {
-            require('./FirstDayTransition')();
-        }, 500);
-    }, 500);
+        //setTimeout(function() {
+        //    require('./FirstDayTransition')();
+        //}, 500);
+    }, 99999);
 }
 
 module.exports = pickNames;

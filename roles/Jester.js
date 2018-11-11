@@ -11,6 +11,10 @@ class Jester extends Player {
 			this.target.kill(7);
 		}	
 	}
+	reset() {
+		this.attack = null;
+		this.defense = null;
+	}
 }
 
 module.exports = Jester;

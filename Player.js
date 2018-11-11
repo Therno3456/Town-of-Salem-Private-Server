@@ -1,6 +1,7 @@
 const Client = require('./Client.js');
 const u = require('./Utilities.js');
 const Factions = require('./Factions.js');
+const AbilityType = require('./AbilityType.js');
 
 class Player extends Client {
 	constructor(client) {
@@ -30,12 +31,21 @@ class Player extends Client {
 		return this.visits;
 	}
 	/*NYI*/
-	canPerformRole() {
+	canPerformRole(abilityType) {
+		let role = this.getClassName();
 		if(!this.target)
 			return false;
-			//if jailor or if roleblocked etc
 		if(this.roleblocked) {
 			this.addMessage(u.code(19) + u.code(9) + u.code(0));
+		}
+		else if(this.target.jailed) {
+			if(abilityType == AbilityType.ROLEBLOCK) {
+				this.target.addMessage(u.code(19) + u.code(8) + u.code(0));
+			}
+			else if(abilityType == AbilityType.ATTACK) {
+				this.target.addMessage(u.code(19) + u.code(14) + u.code(0));
+			}
+			this.addMessage(u.code(19) + u.code(165) + u.code(0));
 		}
 		else {
 			return true;
@@ -61,7 +71,6 @@ class Player extends Client {
 			case 'Janitor':
 			case 'Forger':
 				return true;
-			return false;
 		}
 	}
 	reset() {
@@ -72,19 +81,21 @@ class Player extends Client {
 		this.roleblocked = false;
 		this.framed = false;
 		this.jailor = null;
+		this.target = null;
 		if(role == 'Jailor')
 			this.jailTarget = -1;
 	}
 	visit(visitor) {
 		this.visits.push(visitor);
 	}
-	setRoleBlocked() {
+	setRoleBlocked(roleBlocker) {
 		let role = this.getClassName();
 		if(role == 'SerialKiller') {
-			this.addMessage(u.code(19) + u.code(25) + u.code(0)); //You were murdered by the Serial Killer you visited!
-			this.dead = true;
+			roleBlocker.addMessage(u.code(19) + u.code(25) + u.code(0)); //You were murdered by the Serial Killer you visited!
+			this.addMessage(u.code(19) + u.code(90) + u.code(0)); //Someone roleblocked you so you attacked them!
+			this.target = null;
+			roleBlocker.kill(5);
 		}
-			
 		else {
 			this.roleblocked = true;
 		}
@@ -92,14 +103,18 @@ class Player extends Client {
 	setHealed() {
 		this.healed = true;
 	}
-	kill(who) {
+	kill(who, attacker) {
 		if(this.healed) {
 			this.target.addMessage(u.code(19) + u.code(16) + u.code(0)); //You were attacked but someone nursed you back to health!
 		}
-		else {
+		else if(attacker.attack > this.defense) {
 			this.dead = true;
 			this.killer = who;
 			this.addMessage(u.code(106) + u.code(0));
+		}
+		else {
+			attacker.addMessage(u.code(19) + u.code(98) + u.code(0)); //Your target's defense was too strong to kill.
+			this.addMessage(u.code(19) + u.code(43) + u.code(0)); //Someone attacked you but your defense was too strong!
 		}
 	}
 	setFaction(faction) {

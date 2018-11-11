@@ -6,6 +6,11 @@
 - Save time after each trial
 - Handle trial innocent
 - Mediums can talk to each other at night
+- Multi kill support
+- Defence messages (done?)
+- Doctor and target get multiple healed messages
+- Needs whispers
+- Abilities left message
 
 priority order
 
@@ -26,14 +31,14 @@ Executioner - needs to turn into jester when target killed
 FRAMER - done
 GODFATHER
 INVESTIGATOR - done
-JAILOR - needs execute command
-Jester
+JAILOR - needs execute command ?? not sure if done
+Jester  done
 Lookout - done
 MAFIOSO
 Mayor
 Medium - needs seance and mediums can talk to each other at night
 Retributionist
-SerialKiller - null target if role blocked
+SerialKiller - done
 SHERIFF - done (except for werewolf on full moon)
 Spy
 Transporter

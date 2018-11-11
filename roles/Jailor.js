@@ -10,6 +10,10 @@ class Jailor extends Player {
 	role() {
 		
 	}
+	reset() {
+		this.attack = null;
+		this.defense = null;
+	}
 }
 
 module.exports = Jailor;

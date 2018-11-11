@@ -1,8 +1,10 @@
 const Player = require('../Player.js');
+const PowerStates = require('../PowerStates.js');
 
 class Executioner extends Player {
 	constructor(client) {
 		super(client);
+		this.defense = PowerStates.BASIC;
 		this.setFaction('NEUTRAL');
 	}
 	role() {
@@ -10,6 +12,10 @@ class Executioner extends Player {
 	}
 	setExecutionerTarget(target) {
 		this.executionerTarget = target;
+	}
+	reset() {
+		this.attack = null;
+		this.defense = PowerStates.BASIC;
 	}
 }
 

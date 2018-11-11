@@ -5,6 +5,10 @@ class Bodyguard extends Player {
 		super(client);
 		this.setFaction('TOWN');
 	}
+	reset() {
+		this.attack = null;
+		this.defense = null;
+	}
 }
 
 module.exports = Bodyguard;

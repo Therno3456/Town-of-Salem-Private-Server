@@ -16,6 +16,10 @@ class Lookout extends Player {
 			this.target.visit(this);
 		}
 	}
+	reset() {
+		this.attack = null;
+		this.defense = null;
+	}
 }
 
 module.exports = Lookout;

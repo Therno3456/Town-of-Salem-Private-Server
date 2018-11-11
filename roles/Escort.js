@@ -1,4 +1,5 @@
 const Player = require('../Player.js');
+const AbilityType = require('../AbilityType.js');
 
 class Escort extends Player {
 	constructor(client) {
@@ -7,10 +8,14 @@ class Escort extends Player {
 		this.setFaction('TOWN');
 	}
 	role() {
-		if(this.canPerformRole()) {
-			this.target.setRoleBlocked();
+		if(this.canPerformRole(AbilityType.ROLEBLOCK)) {
+			this.target.setRoleBlocked(this);
 			this.target.visit(this);
 		}
+	}
+	reset() {
+		this.attack = null;
+		this.defense = null;
 	}
 }
 

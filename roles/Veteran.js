@@ -5,6 +5,7 @@ class Veteran extends Player{
 	constructor(client) {
 		super(client);
 		this.priority = 6;
+		this.abilities = 3;
 		this.setFaction('TOWN');
 	}
 	role() {
@@ -15,6 +16,10 @@ class Veteran extends Player{
 			visits[x].addMessage(u.code(19) + u.code(21) + u.code(0));
 			visits[x].kill(10);
 		}
+	}
+	reset() {
+		this.attack = null;
+		this.defense = null;
 	}
 }
 

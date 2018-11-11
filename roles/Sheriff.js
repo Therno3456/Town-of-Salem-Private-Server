@@ -19,6 +19,10 @@ class Sheriff extends Player {
 			this.target.visit();
 		}
 	}
+	reset() {
+		this.attack = null;
+		this.defense = null;
+	}
 }
 
 module.exports = Sheriff;
