@@ -4,9 +4,9 @@ const Roles = require('../Roles.js');
               // Roles.GODFATHER, Roles.FRAMER, Roles.EXECUTIONER, Roles.ESCORT, Roles.MAFIOSO,
               // Roles.LOOKOUT, Roles.SERIALKILLER, Roles.TOWN_KILLING, Roles.JESTER, Roles.RANDOM_TOWN];
 
- var classic = [Roles.MAFIOSO, Roles.SERIALKILLER, Roles.FRAMER, Roles.SHERIFF,
-                Roles.GODFATHER, Roles.FRAMER, Roles.SHERIFF, Roles.SHERIFF, Roles.SHERIFF,
-                Roles.LOOKOUT, Roles.SERIALKILLER, Roles.TOWN_KILLING, Roles.JESTER, Roles.RANDOM_TOWN];
+ var classic = [Roles.VIGILANTE, Roles.SERIALKILLER, Roles.FRAMER, Roles.SHERIFF,
+                Roles.MEDIUM, Roles.FRAMER, Roles.SHERIFF, Roles.SHERIFF, Roles.MEDIUM,
+                Roles.LOOKOUT, Roles.SERIALKILLER, Roles.SERIALKILLER, Roles.JESTER, Roles.RANDOM_TOWN];
 
 function roleList(numberOfPlayers) {
     return classic.slice(0, numberOfPlayers);

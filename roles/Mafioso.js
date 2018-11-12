@@ -7,7 +7,7 @@ class Mafioso extends Player {
 	constructor(client) {
 		super(client);
 		this.mafia = true;
-		this.priority = 3;
+		this.priority = 5;
 		this.attack = PowerStates.BASIC;
 		this.setFaction('MAFIA');
 	}

@@ -4,7 +4,7 @@ class Framer extends Player {
 	constructor(client) {
 		super(client);
 		this.mafia = true;
-		this.priority = 1;
+		this.priority = 2;
 		this.setFaction('MAFIA');
 	}
 	role() {

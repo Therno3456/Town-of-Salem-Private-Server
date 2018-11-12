@@ -4,7 +4,7 @@ const u = require('../Utilities.js');
 class Sheriff extends Player {
 	constructor(client) {
 		super(client);
-		this.priority = 2;
+		this.priority = 3;
 		this.setFaction('TOWN');
 	}
 	role() {

@@ -5,6 +5,12 @@ module.exports = {
     handleBeforeNightTransitionActions() {
         let players = TownOfSalem.getGame().getPlayerList();
         let jailor = players.getRole('Jailor');
+        players = players.getClients();
+        for(var x=0;x<players.length;x++) {
+            if(players[x].abilities) {
+                players[x].write(u.code(131) + u.code(players[x].abilities + 1) + u.code(0));
+            }
+        }
         if(jailor) {
             let jailed = players.getIndex(jailor.jailTarget);
             if(jailed) { //jailor chose to jail someone

@@ -7,15 +7,7 @@ function chatMessage(socket, data) {
     let player = players.getClient(socket);
     let index = players.getSocketIndex(socket) + 1;
     let state = TownOfSalem.getGame().getState();
-    if(player.dead) {
-        players = TownOfSalem.getGame().getPlayerList().getDeadPlayers();
-        players.sendToAll(u.code(6) + u.code(index) + data.slice(1) + u.code(0));
-    }
-    else if(state == States.LOBBY)
-        players.sendToAll(u.code(6) + u.code(255) +  u.code(index) + data.slice(1) + u.code(0));
-    else if(state == States.DISCUSSION || state == States.VOTING || state == States.JUDGEMENT)
-        players.sendToAll(u.code(6) + u.code(index) + data.slice(1) + u.code(0));
-    else if(state == States.NIGHT) {
+    if(state == States.NIGHT) {
         let role = player.getClassName();
         if(player.jailor) {
             player.jailor.write(u.code(6) + u.code(index) + data.slice(1) + u.code(0));
@@ -27,15 +19,26 @@ function chatMessage(socket, data) {
                 mafia[x].write(u.code(6) + u.code(index) + data.slice(1) + u.code(0));
             }
         }
+        else if(player.dead) {
+            players.sendToDead(u.code(6) + u.code(index) + data.slice(1) + u.code(0), true);
+        }
         else if(role == 'Jailor') {
             player.jailTarget.write(u.code(6) + u.code(30) + data.slice(1) + u.code(0));
             player.write(u.code(6) + u.code(30) + data.slice(1) + u.code(0));
         }
         else if(role == 'Medium') {
-            players = TownOfSalem.getGame().getPlayerList().getDeadPlayers();
-            players.sendToAll(u.code(6) + u.code(45) + data.slice(1) + u.code(0));
+            players.sendToDead(u.code(6) + u.code(45) + data.slice(1) + u.code(0), false);
+            player.write(u.code(6) + u.code(45) + data.slice(1) + u.code(0));
         }
     }
+    else if(player.dead) {
+        players.sendToDead(u.code(6) + u.code(index) + data.slice(1) + u.code(0), false);
+    }
+    else if(state == States.LOBBY)
+        players.sendToAll(u.code(6) + u.code(255) +  u.code(index) + data.slice(1) + u.code(0));
+    else if(state == States.DISCUSSION || state == States.VOTING || state == States.JUDGEMENT)
+        players.sendToAll(u.code(6) + u.code(index) + data.slice(1) + u.code(0));
+
     else if(state == States.DEFENSE || state == States.LASTWORDS) {
         if(player == TownOfSalem.getGame().getTargetOnStand())
             players.sendToAll(u.code(6) + u.code(index) + data.slice(1) + u.code(0));

@@ -37,11 +37,12 @@ class PlayerList {
 		}
 		return dead;
 	}
-	/*Returns dead players and mediums (if night time) for night time chat*/
-	getDeadPlayers() {
+	/*Returns dead players*/
+	getDeadPlayers(includeMediums = false) {
 		let dead = [];
 		for(var x=0;x<this.clients.length;x++) {
-			if(this.clients[x].dead)
+			let role = this.clients[x].getClassName();
+			if(this.clients[x].dead || (includeMediums && role == 'Medium'))
 				dead.push(this.clients[x]);
 		}
 		return dead;
@@ -123,6 +124,12 @@ class PlayerList {
 		for(var x=0;x<this.clients.length;x++) {
 			if(this.clients[x].socket != socket)
 				this.clients[x].write(message);
+		}
+	}
+	sendToDead(message, includeMediums) {
+		let list = this.getDeadPlayers(includeMediums);
+		for(var x=0;x<list.length;x++) {
+			list[x].write(message);
 		}
 	}
 	randomizeUsers() {

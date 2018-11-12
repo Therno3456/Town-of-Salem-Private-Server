@@ -4,7 +4,7 @@ const u = require('../Utilities.js');
 class Lookout extends Player {
 	constructor(client) {
 		super(client);
-		this.priority = 5;
+		this.priority = 6;
 		this.setFaction('TOWN');
 	}
 	role() {
