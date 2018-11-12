@@ -17,8 +17,8 @@ class Lookout extends Player {
 		}
 	}
 	reset() {
-		this.attack = null;
-		this.defense = null;
+		this.attack = PowerStates.NONE;
+		this.defense = PowerStates.NONE;
 	}
 }
 

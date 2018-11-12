@@ -11,21 +11,24 @@
 - Doctor and target get multiple healed messages
 - Needs whispers
 - Abilities left message
+- Switch null powerstates to none
+- Mafia promotions
 
 priority order
 
 ESCORT
 FRAMER
 DOCTOR
-GODFATHER/MAFIOSO
-SERIAL KILLER
-TK
+MAFIOSO
+GODFATHER/SERIAL KILLER/VIGILANTE
 INVESTIGATOR/SHERIFF
 JAILOR
 LOOKOUT
+VETERAN
 
 Bodyguard
 DOCTOR - done
+Drifter
 ESCORT - done
 Executioner - needs to turn into jester when target killed
 FRAMER - done

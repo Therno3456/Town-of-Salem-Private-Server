@@ -69,8 +69,8 @@ function getRole(index) {
 			return 'Werewolf';
 		case 32:
 			return 'Witch';
-		case 77:
-			return roles.Bomber;
+		case 78:
+			return roles.Drifter;
 	}
 }
 

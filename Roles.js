@@ -45,6 +45,7 @@ var roles = {
     NEUTRAL_EVIL: 43,
     NEUTRAL_KILLING: 44,
     ANY: 45,
+    DRIFTER: 78,
     CLEANED: 200,
     STONED: 201
 }

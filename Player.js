@@ -2,6 +2,7 @@ const Client = require('./Client.js');
 const u = require('./Utilities.js');
 const Factions = require('./Factions.js');
 const AbilityType = require('./AbilityType.js');
+const PowerStates = require('./PowerStates.js');
 
 class Player extends Client {
 	constructor(client) {
@@ -14,6 +15,8 @@ class Player extends Client {
 		this.voteTarget = -1;
 		this.voteCount = 9; //3 for mayor
 		this.priority = 9;
+		this.attack = PowerStates.NONE;
+		this.defense = PowerStates.NONE;
 	}
 	addMessage(message) {
 		this.messageQueue.push(message);

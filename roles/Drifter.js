@@ -1,15 +1,9 @@
 const Player = require('../Player.js');
 
-class Jester extends Player {
+class Drifter extends Player {
 	constructor(client) {
 		super(client);
 		this.setFaction('NEUTRAL');
-	}
-	role() {
-		if(this.target) {
-			this.target.addMessage(u.code(19) + u.code(84) + u.code(0));
-			this.target.kill(7);
-		}	
 	}
 	reset() {
 		this.attack = PowerStates.NONE;
@@ -17,4 +11,4 @@ class Jester extends Player {
 	}
 }
 
-module.exports = Jester;
+module.exports = Drifter;

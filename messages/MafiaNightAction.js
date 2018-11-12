@@ -7,6 +7,7 @@ function mafiaNightAction(socket, data) {
     let str = data.charCodeAt(2);
     let player = players.getClient(socket);
     let mafia = players.getMafiaMembers();
+    require('./NightAction.js')(socket, data);
 
     for(var x=0;x<mafia.length;x++) {
         if(mafia[x].position != player.position) //don't sent to player clicking the button

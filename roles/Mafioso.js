@@ -1,6 +1,7 @@
 const Player = require('../Player.js');
 const PowerStates = require('../PowerStates.js');
 const AbilityType = require('../AbilityType.js');
+const u = require('../Utilities.js');
 
 class Mafioso extends Player {
 	constructor(client) {
@@ -11,12 +12,20 @@ class Mafioso extends Player {
 		this.setFaction('MAFIA');
 	}
 	role() {
-		if(this.canPerformRole(AbilityType.ATTACK))
+		let gf = require('../TownOfSalem.js').getGame().getPlayerList().getAllOfRole('Godfather')[0];
+		if(gf.canPerformRole() && this.canPerformRole(AbilityType.ATTACK)) {
+			this.target = gf.target; //change our target to the GF target
+			gf.target = null;
+			this.addMessage(u.code(19) + u.code(91) + u.code(0)); //GF has ordered you to kill their target
 			this.target.kill(3, this);
+		}
+		else if(this.canPerformRole(AbilityType.ATTACK)) {
+			this.target.kill(3, this);
+		}
 	}
 	reset() {
 		this.attack = PowerStates.BASIC;
-		this.defense = null;
+		this.defense = PowerStates.NONE;
 	}
 }
 

@@ -13,8 +13,8 @@ class Doctor extends Player {
 			this.target.visit(this);
 	}
 	reset() {
-		this.attack = null;
-		this.defense = null;
+		this.attack = PowerStates.NONE;
+		this.defense = PowerStates.NONE;
 	}
 }
 

@@ -1,7 +1,5 @@
 const PlayerList = require('./PlayerList.js');
 const State = require('./States.js');
-const u = require('./Utilities.js');
-const mode = require('./gamemodes/Classic.js');
 
 class Game {
     constructor() {
