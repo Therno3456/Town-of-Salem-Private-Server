@@ -1,5 +1,6 @@
 const TownOfSalem = require('../TownOfSalem.js');
 const u = require('../Utilities.js');
+const States = require('../States.js');
 
 function sendJudgementVotes() {
     let playerList = TownOfSalem.getGame().getPlayerList();
@@ -15,6 +16,7 @@ function sendJudgementVotes() {
         playerList.sendToAll(u.code(120) + u.code(player.position + 1) + u.code(player.voteTarget + 1) + u.code(0));
     }
     if(guilty > innocent) {
+        TownOfSalem.getGame().setState(States.LASTWORDS);
         playerList.sendToAll(u.code(100) + u.code(guilty + 1) + u.code(innocent + 1) + u.code(0));
         setTimeout(function() {
             require('./StartLastWords')();

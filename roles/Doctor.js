@@ -8,9 +8,13 @@ class Doctor extends Player {
 		this.setFaction('TOWN');
 	}
 	role() {
-		if(this.canPerformRole())
-			this.target.setHealed();
+		if(this.canPerformRole()) {
+			if(this.target.position == this.position) {
+				this.abilities--;
+			}
 			this.target.visit(this);
+			this.target.setHealed();
+		}
 	}
 	reset() {
 		this.attack = PowerStates.NONE;

@@ -93,7 +93,10 @@ class Player extends Client {
 	}
 	setRoleBlocked(roleBlocker) {
 		let role = this.getClassName();
-		if(role == 'SerialKiller') {
+		if(this.roleBlockImmune) {
+			this.addMessage(u.code(19) + u.code(78) + u.code(0));
+		}
+		else if(role == 'SerialKiller') {
 			roleBlocker.addMessage(u.code(19) + u.code(25) + u.code(0)); //You were murdered by the Serial Killer you visited!
 			this.addMessage(u.code(19) + u.code(90) + u.code(0)); //Someone roleblocked you so you attacked them!
 			this.target = null;
@@ -116,8 +119,10 @@ class Player extends Client {
 			this.addMessage(u.code(106) + u.code(0));
 		}
 		else {
+			if(!this.alert) {
+				this.addMessage(u.code(19) + u.code(43) + u.code(0)); //Someone attacked you but your defense was too strong!
+			}
 			attacker.addMessage(u.code(19) + u.code(98) + u.code(0)); //Your target's defense was too strong to kill.
-			this.addMessage(u.code(19) + u.code(43) + u.code(0)); //Someone attacked you but your defense was too strong!
 		}
 	}
 	setFaction(faction) {

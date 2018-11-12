@@ -12,6 +12,7 @@ class Executioner extends Player {
 	}
 	setExecutionerTarget(target) {
 		this.executionerTarget = target;
+		target.executioner = this;
 	}
 	reset() {
 		this.attack = PowerStates.NONE;

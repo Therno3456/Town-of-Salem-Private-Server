@@ -9,8 +9,8 @@ class Framer extends Player {
 	}
 	role() {
 		if(this.canPerformRole()) {
-			this.target.framed = true;
 			this.target.visit(this);
+			this.target.framed = true;
 		}
 	}
 	reset() {

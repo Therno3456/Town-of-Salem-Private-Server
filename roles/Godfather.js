@@ -11,7 +11,8 @@ class Godfather extends Player {
 	}
 	role() {
 		if(this.canPerformRole(AbilityType.ATTACK)) {
-			this.target.kill(3, this);
+			this.target.visit(this, AbilityType.ATTACK);
+			this.target.kill(3, this);			
 		}
 	}
 	reset() {

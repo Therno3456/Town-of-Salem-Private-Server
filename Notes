@@ -1,16 +1,14 @@
 - Socket disconnect event
 - 165 for pets not implemented (not important)
-- 0 after 109 (probably because of names)
-- Names have something after them???
 - Save time after each trial
 - Handle trial innocent
 - Multi kill support
-- Defence messages (done?)
 - Doctor and target get multiple healed messages
-- Needs whispers
-- Abilities left message
+- Whisper support
 - Mafia promotions
-- Cant roleblock an escort, role block immunity
+- 30 on night message cancel
+- jester includes people who died the same day
+- jester buttons show every night
 
 priority order
 
@@ -28,26 +26,27 @@ JAILOR - 5
 LOOKOUT - 6
 
 Bodyguard - not gonna do yet
+Mayor - not gonna do yet
+Spy - not gonna do yet
+Transporter - not gonna do yet
+Retributionist - not gonna do yet
+
 DOCTOR - done
-Drifter - not started
+Drifter - done
 ESCORT - done
 Executioner - needs to turn into jester when target killed
 FRAMER - needs promotion
 GODFATHER - needs promotion
 INVESTIGATOR - done
-JAILOR - needs execute command ?? not sure if done
+JAILOR - done
 Jester  done
 Lookout - done
 MAFIOSO - needs promotion
-Mayor - not gonna do yet
-Medium - needs seance
-Retributionist
+Medium - done
 SerialKiller - done
 SHERIFF - done (except for werewolf on full moon)
-Spy - not gonna do yet
-Transporter - not gonna do yet
-Veteran - test
-Vigilante - suicide message wrong, still shows 3 abilities after killing?
+Veteran - done
+Vigilante - done
 
 _loc6_.StartKilledByMessageTimer(3000);
 will = 5

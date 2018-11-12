@@ -5,6 +5,15 @@ class Drifter extends Player {
 		super(client);
 		this.setFaction('NEUTRAL');
 	}
+	role() {
+
+	}
+	visit(visitor, abilityType) {
+		if(this.target) {
+			visitor.target = this.target;
+			this.target.visit(visitor, abilityType);
+		}
+	}
 	reset() {
 		this.attack = PowerStates.NONE;
 		this.defense = PowerStates.NONE;

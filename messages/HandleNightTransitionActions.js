@@ -4,31 +4,35 @@ const u = require('../Utilities.js');
 module.exports = {
     handleBeforeNightTransitionActions() {
         let players = TownOfSalem.getGame().getPlayerList();
+        let clients = players.getClients();
         let jailor = players.getRole('Jailor');
-        players = players.getClients();
-        for(var x=0;x<players.length;x++) {
-            if(players[x].abilities) {
-                players[x].write(u.code(131) + u.code(players[x].abilities + 1) + u.code(0));
+        let mediums = players.getAllOfRole('Medium');
+        for(var x=0;x<clients.length;x++) {
+            if(clients[x].abilities >= 0) {
+                clients[x].write(u.code(131) + u.code(clients[x].abilities + 1) + u.code(0));
             }
         }
-        if(jailor) {
-            let jailed = players.getIndex(jailor.jailTarget);
-            if(jailed) { //jailor chose to jail someone
-                jailor.jailTarget = jailed;
-                jailed.jailor = jailor;
-                jailor.write(u.code(116) + u.code(jailed.position + 1) + u.code(1 + 1) + u.code(1) + u.code(0)); //second 1 is executed town or not
-                jailed.write(u.code(115) + u.code(0));
+        if(jailor && jailor.jailTarget) {
+            jailor.jailTarget = jailed;
+            jailed.jailor = jailor;
+            jailor.write(u.code(116) + u.code(jailed.position + 1) + u.code(2) + u.code(jailor.killedTown + 1) + u.code(0)); //second 1 is executed town or not
+            jailed.write(u.code(115) + u.code(0));
+        }
+        for(var x=0;x<mediums.length;x++) {
+            let medium = mediums[x];
+            if(medium.dead && medium.seanceTarget) {
+                let target = medium.seanceTarget;
+                target.seancer = medium;
+                target.write(u.code(128) + u.code(0)); //A medium is talking to us!
+                medium.write(u.code(129) + u.code(0)); //Opened a commnication with the living
             }
         }
     },
     handleAfterNightTransitionActions() {
         let players = TownOfSalem.getGame().getPlayerList();
         let jailor = players.getRole('Jailor');
-        if(jailor) {
-            let jailed = players.getIndex(jailor.jailTarget);
-            if(!jailed) {
-                jailor.write(u.code(19) + u.code(108) + u.code(0));
-            }
+        if(jailor && !jailor.jailTarget) {
+            jailor.write(u.code(19) + u.code(108) + u.code(0));
         }
     }
 }

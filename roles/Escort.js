@@ -6,14 +6,13 @@ class Escort extends Player {
 	constructor(client) {
 		super(client);
 		this.priority = 1;
-		this.attack = PowerStates.BASIC;
+		this.roleBlockImmune = true;
 		this.setFaction('TOWN');
 	}
 	role() {
-		this.kill(5, this);
 		if(this.canPerformRole(AbilityType.ROLEBLOCK)) {
+			this.target.visit(this, AbilityType.ROLEBLOCK);
 			this.target.setRoleBlocked(this);
-			this.target.visit(this);
 		}
 	}
 	reset() {

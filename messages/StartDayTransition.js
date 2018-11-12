@@ -13,6 +13,7 @@ function startDayTransition() {
     players.sendToAll(message);
     setTimeout(function() {
         require('./WhoDiedAndHow')().then(function() {
+            require('./IntermediateActions')();
             require('./StartDiscussion')();
         });
     }, 5000);

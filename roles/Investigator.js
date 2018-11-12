@@ -10,6 +10,7 @@ class Investigator extends Player {
 	role() {
 		if(this.canPerformRole()) {
 			let role = this.target.getClassName();
+			this.target.visit(this);
 			if(role =='Escort' || role == 'Transporter' || role == 'Consort')
 				this.addMessage(u.code(19) + u.code(27) + u.code(0));
 			else if(role == 'Doctor' || role == 'Disguiser' || role == 'SerialKiller')
@@ -32,7 +33,6 @@ class Investigator extends Player {
 				this.addMessage(u.code(19) + u.code(38) + u.code(0));
 			else if(role == 'Lookout' || role == 'Forger' || role == 'Witch')
 				this.addMessage(u.code(19) + u.code(39) + u.code(0));
-			this.target.visit(this);
 		}
 	}
 	reset() {

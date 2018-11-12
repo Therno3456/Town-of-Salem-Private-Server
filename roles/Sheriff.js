@@ -1,5 +1,6 @@
 const Player = require('../Player.js');
 const u = require('../Utilities.js');
+const PowerStates = require('../PowerStates.js');
 
 class Sheriff extends Player {
 	constructor(client) {
@@ -9,6 +10,7 @@ class Sheriff extends Player {
 	}
 	role() {
 		if(this.canPerformRole()) {
+			this.target.visit();
 			let role = this.target.getClassName();
 			if(this.target.isMafia())
 				this.addMessage(u.code(19) + u.code(1) + u.code(0));
@@ -16,7 +18,6 @@ class Sheriff extends Player {
 				this.addMessage(u.code(19) + u.code(4) + u.code(0));
 			else
 				this.addMessage(u.code(19) + u.code(2) + u.code(0));
-			this.target.visit();
 		}
 	}
 	reset() {

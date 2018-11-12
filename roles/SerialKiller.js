@@ -12,8 +12,8 @@ class SerialKiller extends Player {
 	}
 	role() {
 		if(this.canPerformRole(AbilityType.ATTACK)) {
+			this.target.visit(this, AbilityType.ATTACK);
 			this.target.kill(5, this);
-			this.target.visit(this);
 		}
 	}
 	reset() {

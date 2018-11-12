@@ -4,7 +4,7 @@ const States = require('../States.js');
 
 function startLastWords() {
     let players = TownOfSalem.getGame().getPlayerList();
-    TownOfSalem.getGame().setState(States.LASTWORDS);
+    //state is set in SendJudgementVotes
     setTimeout(function() {
         let p = TownOfSalem.getGame().getTargetOnStand();
         players.sendToAll(u.code(147) + u.code(0));

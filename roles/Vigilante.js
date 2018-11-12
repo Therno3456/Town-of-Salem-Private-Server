@@ -16,11 +16,12 @@ class Vigilante extends Player {
 	role() {
 		if(this.killedTown) {
 			this.addMessage(u.code(19) + u.code(89) + u.code(0));
-			this.kill(2, this);
+			this.kill(11, this);
 		}
 		if(this.canPerformRole(AbilityType.ATTACK)) {
+			this.target.visit(this, AbilityType.ATTACK);
 			this.target.kill(2, this);
-			this.target.visit(this);
+			this.abilities--;
 			if(this.target.getFaction() == Factions.TOWN) {
 				this.addMessage(u.code(158) + u.code(0));
 				this.killedTown = true;

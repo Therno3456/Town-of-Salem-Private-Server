@@ -10,7 +10,6 @@ function whoDiedAndHow(target = null) {
             var promise = new Promise(function(resolve, reject) {
                 let time = 12000;
                 let p = deadPlayers[x];
-                p.deathShown = true;
                 if(p.will)
                     time += 8000;
                 setTimeout(function() {

@@ -83,6 +83,18 @@ class PlayerList {
 		}
 		throw new Error("Client wasn't found in list.");
 	}
+	getClientSwitchRole(socket) {
+		let obj = {};
+		for(var x=0;x<this.clients.length;x++) {
+			if(this.clients[x].socket == socket) {
+				obj.client = x;
+			}
+			else if(this.sorted[x].socket == socket) {
+				obj.sorted = x;
+			}
+		}
+		return obj;
+	}
 	getClients() {
 		return this.clients;
 	}
@@ -140,7 +152,6 @@ class PlayerList {
 		let shuffledRoles = mode(this.clients.length);
         for(var x=0;x<this.clients.length;x++) {
 			let role = RoleBuilder(shuffledRoles[x]);
-			console.log(role);
 			role = new role(this.clients[x]);
 			this.clients[x] = role;
 			this.clients[x].roleIndex = shuffledRoles[x];
@@ -150,6 +161,15 @@ class PlayerList {
 			//END TEST CODE
 		}
 		this.sortRoleOrder();
+	}
+	switchRole(player, roleIndex) {
+		let indexes = this.getClientSwitchRole(player.socket);
+		let role = RoleBuilder(roleIndex);
+		let newPlayer = new role(player);
+		newPlayer.position = player.position;
+		newPlayer.roleIndex = roleIndex;
+		this.clients[indexes.client] = newPlayer;
+		this.sorted[indexes.sorted] = newPlayer;
 	}
 	sortRoleOrder() {
 		this.sorted = [...this.clients].sort(function(p1, p2) {
