@@ -24,6 +24,9 @@ function sendJudgementVotes() {
     }
     else {
         playerList.sendToAll(u.code(101) + u.code(guilty + 1) + u.code(innocent + 1) + u.code(0));
+        setTimeout(function() {
+            require('./StartVoting')();
+        }, 5000);
     }
 }
 

@@ -5,12 +5,14 @@ const States = require('../States.js');
 function startVoting() {
     let players = TownOfSalem.getGame().getPlayerList();
     TownOfSalem.getGame().setState(States.VOTING);
-    //NOTE
-    //first time only we send 30
-    players.sendToAll(u.code(97) + u.code(30) + u.code(0));
-    TownOfSalem.timer = setTimeout(function() {
-        require('./StartNightTransition')();
-    }, 5000)
+    players.resetVotes(-1);
+    players.sendToAll(u.code(97) + u.code(TownOfSalem.getGame().time) + u.code(0));
+    TownOfSalem.getGame().timer = setInterval(function() {
+        let time = TownOfSalem.getGame().time--;
+        if(time == 0) {
+            require('./StartNightTransition')();
+        }
+    }, 1000)
 }
 
 module.exports = startVoting;

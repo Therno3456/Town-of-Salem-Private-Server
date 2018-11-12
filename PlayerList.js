@@ -185,9 +185,9 @@ class PlayerList {
 		}
 		return mafia;
 	}
-	resetVotes() {
+	resetVotes(value) {
 		for(var x=0;x<this.clients.length;x++) {
-			this.clients[x].voteTarget = 2; //abstain
+			this.clients[x].voteTarget = value;
 		}
 	}
 }

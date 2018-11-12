@@ -1,7 +1,6 @@
 - Socket disconnect event
 - 165 for pets not implemented (not important)
-- Save time after each trial
-- Handle trial innocent
+- Handle 3 tiral each day
 - Multi kill support
 - Doctor and target get multiple healed messages
 - Whisper support
@@ -34,7 +33,7 @@ Retributionist - not gonna do yet
 DOCTOR - done
 Drifter - done
 ESCORT - done
-Executioner - needs to turn into jester when target killed
+Executioner - done
 FRAMER - needs promotion
 GODFATHER - needs promotion
 INVESTIGATOR - done
