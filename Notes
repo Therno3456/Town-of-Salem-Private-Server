@@ -1,11 +1,10 @@
 - Socket disconnect event (implement in index)
-- 165 for pets not implemented (not important)
-- Multi kill support
-- Doctor and target get multiple healed messages
 - Whisper support
 - Mafia promotions
-- Show if mafia mmeber was jailed
-- canperformrole for everyrone since jesters dont get message
+- Multiple executioners wouldn't work
+
+- order is wrong, don't care
+ 165 for pets not implemented (not important)
 
 priority order
 

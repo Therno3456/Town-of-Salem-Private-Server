@@ -9,7 +9,7 @@ function startFirstDay() {
     TownOfSalem.getGame().getState(State.DISCUSSION);
     setTimeout(function() {
         StartNightTransition();
-    }, 1000);
+    }, 99999);
 }
 
 module.exports = startFirstDay;

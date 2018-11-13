@@ -14,10 +14,6 @@ class Vigilante extends Player {
 		this.setFaction('TOWN');
 	}
 	role() {
-		if(this.killedTown) {
-			this.addMessage(u.code(19) + u.code(89) + u.code(0));
-			this.kill(11, this);
-		}
 		if(this.canPerformRole(AbilityType.ATTACK)) {
 			this.target.visit(this, AbilityType.ATTACK);
 			this.target.kill(2, this);
@@ -27,6 +23,10 @@ class Vigilante extends Player {
 				this.killedTown = true;
 				this.abilities = 0;
 			}
+		}
+		if(this.killedTown) {
+			this.addMessage(u.code(19) + u.code(89) + u.code(0));
+			this.kill(11, this);
 		}
 	}
 	reset() {

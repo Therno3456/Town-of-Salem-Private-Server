@@ -9,6 +9,8 @@ class Player extends Client {
 		super(client.socket, client.username);
 		this.messageQueue = [];
 		this.visits = [];
+		this.killers = [];
+		this.healers = [];
 		this.position = -1;
 		this.framed = false;
 		this.roleblocked = false;
@@ -36,11 +38,11 @@ class Player extends Client {
 	/*NYI*/
 	canPerformRole(abilityType) {
 		let role = this.getClassName();
-		if(!this.target)
-			return false;
 		if(this.roleblocked) {
 			this.addMessage(u.code(19) + u.code(9) + u.code(0));
 		}
+		else if(!this.target) 
+			return false;
 		else if(this.target.jailed) {
 			if(abilityType == AbilityType.ROLEBLOCK) {
 				this.target.addMessage(u.code(19) + u.code(8) + u.code(0));
@@ -80,6 +82,7 @@ class Player extends Client {
 		let role = this.getClassName();
 		this.messageQueue = [];
 		this.visits = [];
+		this.killers = [];
 		this.healed = false;
 		this.roleblocked = false;
 		this.framed = false;
@@ -106,17 +109,27 @@ class Player extends Client {
 			this.roleblocked = true;
 		}
 	}
-	setHealed() {
-		this.healed = true;
+	setHealed(healer) {
+		this.healers.push(healer);
 	}
 	kill(who, attacker) {
-		if(this.healed) {
+		if(this.healers.length) {
+			/*Targets should get multiple messages if they're attacked multiple times*/
 			this.target.addMessage(u.code(19) + u.code(16) + u.code(0)); //You were attacked but someone nursed you back to health!
+			/*Doctors only get 1 notification that their target was attacked*/
+			if(!this.healed) {
+				for(var x=0;x<this.healers.length;x++) {
+					this.healers[x].write(u.code(19) + u.code(23) + u.code(0)); //Your target was attacked last night!
+				}
+			}
+			this.healed = true;
 		}
 		else if(attacker.attack > this.defense) {
-			this.dead = true;
-			this.killer = who;
-			this.addMessage(u.code(106) + u.code(0));
+			this.killers.push(who);
+			if(!this.dead) {
+				this.dead = true;
+				this.addMessage(u.code(106) + u.code(0));
+			}
 		}
 		else {
 			if(!this.alert) {

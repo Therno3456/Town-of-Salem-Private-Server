@@ -13,7 +13,7 @@ class Doctor extends Player {
 				this.abilities--;
 			}
 			this.target.visit(this);
-			this.target.setHealed();
+			this.target.setHealed(this);
 		}
 	}
 	reset() {

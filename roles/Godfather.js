@@ -7,6 +7,7 @@ class Godfather extends Player {
 		super(client);
 		this.priority = 4;
 		this.attack = PowerStates.BASIC;
+		this.mafia = true;
 		this.setFaction('MAFIA');
 	}
 	role() {

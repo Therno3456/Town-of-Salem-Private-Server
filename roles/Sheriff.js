@@ -10,7 +10,7 @@ class Sheriff extends Player {
 	}
 	role() {
 		if(this.canPerformRole()) {
-			this.target.visit();
+			this.target.visit(this);
 			let role = this.target.getClassName();
 			if(this.target.isMafia())
 				this.addMessage(u.code(19) + u.code(1) + u.code(0));

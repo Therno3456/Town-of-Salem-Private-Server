@@ -13,10 +13,19 @@ module.exports = {
             }
         }
         if(jailor && jailor.jailTarget) {
-            jailor.jailTarget = jailed;
-            jailed.jailor = jailor;
-            jailor.write(u.code(116) + u.code(jailed.position + 1) + u.code(2) + u.code(jailor.killedTown + 1) + u.code(0)); //second 1 is executed town or not
-            jailed.write(u.code(115) + u.code(0));
+            let target = jailor.jailTarget;
+            target.jailor = jailor;
+            jailor.write(u.code(116) + u.code(target.position + 1) + u.code(2) + u.code(jailor.killedTown + 1) + u.code(0)); //second 1 is executed town or not
+            target.write(u.code(115) + u.code(0));
+            
+            if(target.mafia) {
+                let mafia = players.getMafiaMembers();
+                for(var x=0;x<mafia.length;x++) {
+                    if(!mafia[x].jailor) { //don't send to jailed member
+                        mafia[x].write(u.code(143) + u.code(jailor.jailTarget.position + 1) + u.code(0));
+                    }    
+                }
+            }
         }
         for(var x=0;x<mediums.length;x++) {
             let medium = mediums[x];

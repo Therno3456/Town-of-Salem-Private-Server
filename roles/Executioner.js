@@ -8,7 +8,7 @@ class Executioner extends Player {
 		this.setFaction('NEUTRAL');
 	}
 	role() {
-
+		this.canPerformRole();
 	}
 	setExecutionerTarget(target) {
 		this.executionerTarget = target;

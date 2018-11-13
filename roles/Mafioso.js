@@ -13,7 +13,7 @@ class Mafioso extends Player {
 	}
 	role() {
 		let gf = require('../TownOfSalem.js').getGame().getPlayerList().getRole('Godfather');
-		if(gf.canPerformRole() && this.canPerformRole(AbilityType.ATTACK)) {
+		if(gf && gf.canPerformRole() && this.canPerformRole(AbilityType.ATTACK)) {
 			this.target = gf.target; //change our target to the GF target
 			gf.target = null;
 			this.addMessage(u.code(19) + u.code(91) + u.code(0)); //GF has ordered you to kill their target

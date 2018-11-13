@@ -9,6 +9,7 @@ class Drifter extends Player {
 
 	}
 	visit(visitor, abilityType) {
+		this.canPerformRole();
 		if(this.target) {
 			visitor.target = this.target;
 			this.target.visit(visitor, abilityType);

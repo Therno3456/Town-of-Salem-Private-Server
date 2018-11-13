@@ -14,7 +14,10 @@ function whoDiedAndHow(target = null) {
                     time += 8000;
                 setTimeout(function() {
                     let message = u.code(95) + u.code(p.position + 1) + u.code(p.roleIndex + 1);
-                    message += target ? u.code(2) : u.code(1) + u.code(p.killer);
+                    message += target ? u.code(2) : u.code(1);
+                    for(var x=0;x<p.killers.length;x++) {
+                        message += u.code(p.killers[x]);
+                    }
                     message += u.code(0);
                     players.sendToAll(message);
                     if(p.will) {

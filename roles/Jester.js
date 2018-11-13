@@ -9,6 +9,7 @@ class Jester extends Player {
 		this.setFaction('NEUTRAL');
 	}
 	role() {
+		this.canPerformRole();
 		if(this.target) {
 			this.target.addMessage(u.code(19) + u.code(84) + u.code(0));
 			this.target.kill(7, this);

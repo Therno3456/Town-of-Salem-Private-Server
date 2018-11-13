@@ -9,6 +9,7 @@ const DayAction = require('./messages/DayAction.js');
 const UserCastVote = require('./messages/UserCastVote.js');
 const UserVotedGuilty = require('./messages/UserVotedGuilty.js');
 const UserVotedInnocent = require('./messages/UserVotedInnocent.js');
+const WhisperMessage = require('./messages/WhisperMessage.js');
 
 class MessageManager {
     constructor() {
@@ -17,6 +18,7 @@ class MessageManager {
     }
     createMessages() {
         this.serverMessages[3] = ChatMessage;
+        this.serverMessages[8] = WhisperMessage;
         this.serverMessages[9] = StartGame;
         this.serverMessages[10] = UserCastVote;
         this.serverMessages[11] = NightAction;
