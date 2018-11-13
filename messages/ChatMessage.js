@@ -38,9 +38,12 @@ function chatMessage(socket, data) {
                 player.write(u.code(6) + u.code(45) + data.slice(1) + u.code(0));
             }
         }
+        else if(player.dead) {
+            players.sendToDead(u.code(6) + u.code(index) + data.slice(1) + u.code(0), true);
+        }
     }
     else if(player.dead) {
-        players.sendToDead(u.code(6) + u.code(index) + data.slice(1) + u.code(0), true);
+        players.sendToDead(u.code(6) + u.code(index) + data.slice(1) + u.code(0), false);
     }
     else if(state == States.LOBBY)
         players.sendToAll(u.code(6) + u.code(255) +  u.code(index) + data.slice(1) + u.code(0));

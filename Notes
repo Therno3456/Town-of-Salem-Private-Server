@@ -1,13 +1,11 @@
-- Socket disconnect event
+- Socket disconnect event (implement in index)
 - 165 for pets not implemented (not important)
-- Handle 3 tiral each day
 - Multi kill support
 - Doctor and target get multiple healed messages
 - Whisper support
 - Mafia promotions
-- 30 on night message cancel
-- jester includes people who died the same day
-- jester buttons show every night
+- Show if mafia mmeber was jailed
+- canperformrole for everyrone since jesters dont get message
 
 priority order
 
@@ -61,3 +59,5 @@ Vig killing town 158
 17 for will
 
 131 abilities
+
+m_serverMessages[143] = MafiaWasJailed;

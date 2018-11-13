@@ -125,6 +125,11 @@ class Player extends Client {
 			attacker.addMessage(u.code(19) + u.code(98) + u.code(0)); //Your target's defense was too strong to kill.
 		}
 	}
+	lynch() {
+		this.dead = true;
+		this.deathShown = true;
+		this.write(u.code(106) + u.code(0));
+	}
 	setFaction(faction) {
 		this.faction = Factions[faction];
 	}

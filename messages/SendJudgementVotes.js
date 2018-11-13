@@ -3,7 +3,8 @@ const u = require('../Utilities.js');
 const States = require('../States.js');
 
 function sendJudgementVotes() {
-    let playerList = TownOfSalem.getGame().getPlayerList();
+    let game = TownOfSalem.getGame();
+    let playerList = game.getPlayerList();
     let clients = playerList.getClients();
     let guilty = 0;
     let innocent = 0;
@@ -16,7 +17,7 @@ function sendJudgementVotes() {
         playerList.sendToAll(u.code(120) + u.code(player.position + 1) + u.code(player.voteTarget + 1) + u.code(0));
     }
     if(guilty > innocent) {
-        TownOfSalem.getGame().setState(States.LASTWORDS);
+        game.setState(States.LASTWORDS);
         playerList.sendToAll(u.code(100) + u.code(guilty + 1) + u.code(innocent + 1) + u.code(0));
         setTimeout(function() {
             require('./StartLastWords')();
@@ -25,8 +26,13 @@ function sendJudgementVotes() {
     else {
         playerList.sendToAll(u.code(101) + u.code(guilty + 1) + u.code(innocent + 1) + u.code(0));
         setTimeout(function() {
-            require('./StartVoting')();
-        }, 5000);
+            if(game.numberOfTrials == 0) {
+                require('./StartNightTransition')();
+            }
+            else {
+                require('./StartVoting')();
+            }
+        }, 5500);
     }
 }
 

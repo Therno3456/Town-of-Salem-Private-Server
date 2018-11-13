@@ -47,6 +47,15 @@ class PlayerList {
 		}
 		return dead;
 	}
+	getAlivePlayers() {
+		let alive = [];
+		for(var x=0;x<this.clients.length;x++) {
+			if(!this.clients[x].dead) {
+				alive.push(this.clients[x]);
+			}
+		}
+		return alive;
+	}
 	getExecutionerTarget() {
 		let town = [];
 		for(var x=0;x<this.clients.length;x++) {

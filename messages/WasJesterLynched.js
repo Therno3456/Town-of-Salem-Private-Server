@@ -6,7 +6,7 @@ function wasJesterLynched(lynchedPlayer) {
     let role = lynchedPlayer.getClassName();
     let message = u.code(122);
     if(role == 'Jester') {
-        message += getVotes(players.getClients()) + u.code(0);
+        message += getVotes(players.getAlivePlayers()) + u.code(0);
         lynchedPlayer.won = true;
         lynchedPlayer.write(message);
         players.sendToAll(u.code(19) + u.code(99) + u.code(0)); //The Jester will get his revenge...

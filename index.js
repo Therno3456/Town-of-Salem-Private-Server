@@ -6,6 +6,9 @@ const port = 3600;
 var tempMessage = 0;
 
 var server = net.createServer(function(socket) {
+	socket.on('close', function(a) { //disconnect event
+		//implement here
+	});
     socket.on('data', function(data) {
         data = data.toString();
         data = handleMessage(data);
@@ -26,7 +29,7 @@ var server = net.createServer(function(socket) {
             }
             console.log(str);
         }
-    });
+	});
 });
 
 server.listen(port, '127.0.0.1');

@@ -10,13 +10,14 @@ function startLastWords() {
         players.sendToAll(u.code(147) + u.code(0));
         setTimeout(function() {
             TownOfSalem.getGame().setState(States.DISCUSSION);
+            p.lynch();
             require('./HasExecutionerWon')(p);
             require('./WasJesterLynched')(p);
             require('./WhoDiedAndHow')(p).then(function() {
                 require('./StartNightTransition')();
             });
         }, 3000);
-    }, 6000);
+    }, 1000);
 }
 
 module.exports = startLastWords;
