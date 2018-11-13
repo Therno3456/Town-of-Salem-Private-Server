@@ -7,7 +7,7 @@ var tempMessage = 0;
 
 var server = net.createServer(function(socket) {
 	socket.on('close', function(a) { //disconnect event
-		//implement here
+		require('./messages/UserLeftGame')(socket);
 	});
     socket.on('data', function(data) {
         data = data.toString();

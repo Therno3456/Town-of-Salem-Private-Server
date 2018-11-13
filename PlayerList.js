@@ -129,6 +129,7 @@ class PlayerList {
 			if(this.clients[x].getClassName() == role)
 				return this.clients[x];
 		}
+		return false;
 	}
 	getSocketIndex(socket) {
 		for(var x=0;x<this.clients.length;x++) {

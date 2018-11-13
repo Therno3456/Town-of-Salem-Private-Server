@@ -1,7 +1,8 @@
-- Socket disconnect event (implement in index)
-- Whisper support
 - Mafia promotions
-- Multiple executioners wouldn't work
+- Multiple executioners with same target wouldn't work
+- Implement random roles
+- Implement win conditions
+- Test disconnect more
 
 - order is wrong, don't care
  165 for pets not implemented (not important)

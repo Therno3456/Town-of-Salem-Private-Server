@@ -113,7 +113,8 @@ class Player extends Client {
 		this.healers.push(healer);
 	}
 	kill(who, attacker) {
-		if(this.healers.length) {
+		let role = attacker.getClassName();
+		if(this.healers.length && role != 'Jester' && (role != 'Vigilante' && attacked.killedTown)) { //prevent healing jester haunt and vig guilt
 			/*Targets should get multiple messages if they're attacked multiple times*/
 			this.target.addMessage(u.code(19) + u.code(16) + u.code(0)); //You were attacked but someone nursed you back to health!
 			/*Doctors only get 1 notification that their target was attacked*/
@@ -124,7 +125,7 @@ class Player extends Client {
 			}
 			this.healed = true;
 		}
-		else if(attacker.attack > this.defense) {
+		else if(attacker.attack > this.defense || who == 6) { //6 is suicide
 			this.killers.push(who);
 			if(!this.dead) {
 				this.dead = true;
