@@ -6,6 +6,7 @@ class Bodyguard extends Player {
 		this.setFaction('TOWN');
 	}
 	reset() {
+		super.reset();
 		this.attack = PowerStates.NONE;
 		this.defense = PowerStates.NONE;
 	}

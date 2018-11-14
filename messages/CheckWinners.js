@@ -1,6 +1,7 @@
 const TownOfSalem = require('../TownOfSalem.js');
 const u = require('../Utilities.js');
 const Roles = require('../Roles.js');
+const States = require('../States.js');
 
 function checkWinners() {
     let players = TownOfSalem.getGame().getPlayerList();
@@ -19,19 +20,20 @@ function checkWinners() {
     let filtered = factions.filter(function(elem, index) {
         return elem > 0 ? index+1 : false; //0 is treated as false
     });
-    if(filtered.length == 1) { //only 1 faction alive
+    if(filtered.length == 0) { //only 1 faction alive
         let winner = factions.indexOf(filtered[0]);
-        switch(winner) {
-            case 0:
-                players.sendToAll(u.code(135) + u.code(1) + u.code(0));
-                return true;
-            case 1:
-                players.sendToAll(u.code(135) + u.code(2) + u.code(0));
-                return true;
-            case 2:
-                players.sendToAll(u.code(135) + u.code(3) + u.code(0));
-                return true;
+        let winningPlayers = players.getWinningFaction(winner);
+        let message = u.code(135) + u.code(winner + 1);
+        for(var x=0;x<winningPlayers.length;x++) {
+            message += u.code(winningPlayers[x].position + 1);
         }
+        message += u.code(0);
+        players.sendToAll(message);
+        TownOfSalem.getGame().setState(States.SOMEONEWON);
+        return true;
+    }
+    else {
+        return false;
     }
     //1 town
     //2 maf

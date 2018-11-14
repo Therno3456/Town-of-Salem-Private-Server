@@ -1,29 +1,40 @@
 const Roles = require('../Roles.js');
 const u = require('../Utilities.js');
 
-//var classic = [Roles.SHERIFF, Roles.DOCTOR, Roles.INVESTIGATOR, Roles.JAILOR,
-              // Roles.GODFATHER, Roles.FRAMER, Roles.EXECUTIONER, Roles.ESCORT, Roles.MAFIOSO,
-              // Roles.LOOKOUT, Roles.SERIALKILLER, Roles.TOWN_KILLING, Roles.JESTER, Roles.RANDOM_TOWN];
+/*Role list to send to each player*/
+//var classic = [Roles.TOWN_INVESTIGATIVE, Roles.DOCTOR, Roles.TOWN_INVESTIGATIVE, Roles.JAILOR, Roles.DRIFTER,
+//               Roles.GODFATHER, Roles.CONSORT, Roles.EXECUTIONER, Roles.ESCORT, Roles.MAFIOSO,
+//               Roles.LOOKOUT, Roles.SERIALKILLER, Roles.TOWN_KILLING, Roles.JESTER, Roles.RANDOM_TOWN];
 
- var classic = [Roles.MAFIOSO, Roles.SHERIFF, Roles.SHERIFF, Roles.SERIALKILLER,
-                Roles.MAFIOSO, Roles.FRAMER, Roles.FRAMER, Roles.FRAMER, Roles.MEDIUM,
-                Roles.LOOKOUT, Roles.SERIALKILLER, Roles.SERIALKILLER, Roles.JESTER, Roles.RANDOM_TOWN];
+var classic = [Roles.DOCTOR, Roles.MAFIOSO, Roles.SHERIFF, Roles.JAILOR, Roles.SHERIFF,
+                Roles.SHERIFF, Roles.SHERIFF, Roles.SHERIFF, Roles.ESCORT, Roles.SHERIFF,
+                Roles.LOOKOUT, Roles.SHERIFF, Roles.SHERIFF, Roles.SHERIFF, Roles.RANDOM_TOWN];
 
 const unique = [Roles.VETERAN, Roles.JAILOR, Roles.GODFATHER];
-const random = [Roles.RANDOM_TOWN, Roles.RANDOM_MAFIA, Roles.RANDOM_NEUTRAL, Roles.ANY];
+const random = [Roles.RANDOM_TOWN, Roles.TOWN_INVESTIGATIVE, Roles.TOWN_PROTECTIVE, Roles.TOWN_SUPPORT, Roles.TOWN_KILLING, Roles.RANDOM_MAFIA, Roles.RANDOM_NEUTRAL, Roles.ANY];
 
-function roleList(numberOfPlayers) {
-    parseRandoms();
-    console.log(classic);
-    return classic.slice(0, numberOfPlayers);
+var parsedList = parseRandoms();
+
+function roleList(numberOfPlayers, parsed = false) {
+    if(parsed) {
+        return parsedList.slice(0, numberOfPlayers);
+    }
+    else {
+        return classic.slice(0, numberOfPlayers);
+    }
 }
 
 function parseRandoms() {
+    let roles = [];
     for(var x=0;x<classic.length;x++) {
         if(random.includes(classic[x])) {
-            classic[x] = getRandomRole(classic[x]);
+            roles[x] = getRandomRole(classic[x]);
+        }
+        else {
+            roles[x] = classic[x];
         }
     }
+    return roles;
 }
 
 function getRandomRole(role) {

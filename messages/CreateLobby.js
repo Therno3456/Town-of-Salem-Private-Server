@@ -23,7 +23,10 @@ function joinLobby(socket) {
 			socket.write(u.code(4) + u.code(1) + u.code(1) + clients[x].username + '*' + u.code(x+1) + u.code(1) + u.code(0));
 	}
 	setTimeout(function() {
-		//players.fakePlayers(); //fake players
+		if(!TownOfSalem.dfgfdgdf) {
+			//players.fakePlayers(); //fake players
+			TownOfSalem.dfgfdgdf = true;
+		}
 	}, 200);
 	
 }

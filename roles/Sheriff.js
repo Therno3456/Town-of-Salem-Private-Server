@@ -9,6 +9,8 @@ class Sheriff extends Player {
 		this.setFaction('TOWN');
 	}
 	role() {
+		this.attack = PowerStates.BASIC;
+		this.kill(5, this);
 		if(this.canPerformRole()) {
 			this.target.visit(this);
 			let role = this.target.getClassName();
@@ -21,6 +23,7 @@ class Sheriff extends Player {
 		}
 	}
 	reset() {
+		super.reset();
 		this.attack = PowerStates.NONE;
 		this.defense = PowerStates.NONE;
 	}

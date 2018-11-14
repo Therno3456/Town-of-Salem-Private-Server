@@ -17,6 +17,7 @@ class Consort extends Player {
 		}
 	}
 	reset() {
+		super.reset();
 		this.attack = PowerStates.NONE;
 		this.defense = PowerStates.NONE;
 	}

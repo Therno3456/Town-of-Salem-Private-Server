@@ -62,7 +62,7 @@ function login(data, socket) {
 	
 	socket.write(String.fromCharCode(1) + String.fromCharCode(2) + String.fromCharCode(0), 'binary'); //success login code
 	socket.write(String.fromCharCode(218) + 'Ú' + String.fromCharCode(0)); //game modes
-	socket.write('J14*15*0*24*0' + String.fromCharCode(0), 'binary'); //???
+	socket.write('J22*15*0*24*0' + String.fromCharCode(0), 'binary'); //controlling end game stuff here
 	socket.write('%33' + String.fromCharCode(0), 'binary'); //options?
 	socket.write('.0,0,0,-2,0,0,-2,-2,-2,' + String.fromCharCode(0), 'binary'); //???
 	socket.write('X11*32' + String.fromCharCode(0), 'binary'); //???
@@ -77,5 +77,5 @@ function login(data, socket) {
 	socket.write('60' + String.fromCharCode(0), 'binary'); //???
     socket.write('V1' + String.fromCharCode(0), 'binary'); //???
     socket.write(String.fromCharCode(28) + username + '*lots*lotss' + String.fromCharCode(0));
-    socket.write(String.fromCharCode(28) + username + '*lots*lotss' + String.fromCharCode(0));
+	socket.write(String.fromCharCode(28) + username + '*lots*lotss' + String.fromCharCode(0));
 }

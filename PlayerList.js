@@ -23,7 +23,7 @@ class PlayerList {
 		}
 	}
 	fakePlayers() {
-		var players = ['b', 'c', 'd'];
+		var players = ['b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n'];
 		for(var x=0;x<players.length;x++) {
 			let client = ClientList.createFakeClient(players[x]);
 			this.addPlayer(null, client);
@@ -160,9 +160,10 @@ class PlayerList {
 		//this.clients = u.shuffle(this.clients);
 		//let shuffledRoles = u.shuffle(mode(this.clients.length));
 		console.log("ROLES ARE NOT BEING SHUFFLED");
-		let shuffledRoles = mode(this.clients.length);
+		let shuffledRoles = mode(this.clients.length, true);
         for(var x=0;x<this.clients.length;x++) {
 			let role = RoleBuilder(shuffledRoles[x]);
+			console.log(role);
 			role = new role(this.clients[x]);
 			this.clients[x] = role;
 			this.clients[x].roleIndex = shuffledRoles[x];
@@ -195,6 +196,24 @@ class PlayerList {
 				mafia.push(player);
 		}
 		return mafia;
+	}
+	getWinningFaction(faction) {
+		let winners = [];
+		for(var x=0;x<this.clients.length;x++) {
+			let player = this.clients[x];
+			if(player.won) {
+				winners.push(player);
+			}
+			else if(player.socket && player.faction == faction) {
+				winners.push(player);
+			}
+		}
+		return winners;
+	}
+	reset() {
+		for(var x=0;x<this.clients.length;x++) {
+			this.clients[x].reset();
+		}
 	}
 	resetVotes(value) {
 		for(var x=0;x<this.clients.length;x++) {

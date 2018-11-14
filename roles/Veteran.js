@@ -16,6 +16,7 @@ class Veteran extends Player{
 		this.alert = true;
 	}
 	reset() {
+		super.reset();
 		this.attack = PowerStates.POWERFUL;
 		this.defense = PowerStates.NONE;
 		this.alert = false;

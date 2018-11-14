@@ -79,17 +79,16 @@ class Player extends Client {
 		}
 	}
 	reset() {
-		let role = this.getClassName();
 		this.messageQueue = [];
 		this.visits = [];
 		this.killers = [];
+		this.healers = [];
 		this.healed = false;
 		this.roleblocked = false;
 		this.framed = false;
 		this.jailor = null;
 		this.target = null;
-		if(role == 'Jailor')
-			this.jailTarget = -1;
+		this.voteTarget = -1;
 	}
 	visit(visitor) {
 		this.visits.push(visitor);
@@ -114,8 +113,11 @@ class Player extends Client {
 	}
 	kill(who, attacker) {
 		let role = attacker.getClassName();
-		if(this.healers.length && role != 'Jester' && (role != 'Vigilante' && attacked.killedTown)) { //prevent healing jester haunt and vig guilt
+		if(this.healers.length && role != 'Jester') { //prevent healing jester haunt and vig guilt
 			/*Targets should get multiple messages if they're attacked multiple times*/
+			if(role == 'Vigilante' && attacker.killedTown) {
+				return;
+			}
 			this.target.addMessage(u.code(19) + u.code(16) + u.code(0)); //You were attacked but someone nursed you back to health!
 			/*Doctors only get 1 notification that their target was attacked*/
 			if(!this.healed) {

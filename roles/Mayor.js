@@ -9,6 +9,7 @@ class Mayor extends Player {
 		this.canPerformRole();
 	}
 	reset() {
+		super.reset();
 		this.attack = PowerStates.NONE;
 		this.defense = PowerStates.NONE;
 	}

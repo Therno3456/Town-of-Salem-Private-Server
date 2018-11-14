@@ -33,9 +33,13 @@ class Investigator extends Player {
 				this.addMessage(u.code(19) + u.code(38) + u.code(0));
 			else if(role == 'Lookout' || role == 'Forger' || role == 'Witch')
 				this.addMessage(u.code(19) + u.code(39) + u.code(0));
+			else if(role == 'Drifter') {
+				this.addMessage(u.code(19) + u.code(186) + u.code(0));
+			}
 		}
 	}
 	reset() {
+		super.reset();
 		this.attack = PowerStates.NONE;
 		this.defense = PowerStates.NONE;
 	}

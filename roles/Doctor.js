@@ -1,4 +1,5 @@
 const Player = require('../Player.js');
+const PowerStates = require('../PowerStates.js');
 
 class Doctor extends Player {
 	constructor(client) {
@@ -17,6 +18,7 @@ class Doctor extends Player {
 		}
 	}
 	reset() {
+		super.reset();
 		this.attack = PowerStates.NONE;
 		this.defense = PowerStates.NONE;
 	}

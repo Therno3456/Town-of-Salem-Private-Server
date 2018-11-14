@@ -8,6 +8,7 @@ function startDiscussion() {
     game.setState(States.DISCUSSION);
     game.time = 30;
     game.numberOfTrials = 3;
+    players.reset();
     players.sendToAll(u.code(96) + u.code(0));
     setTimeout(function() {
         require('./StartVoting')();

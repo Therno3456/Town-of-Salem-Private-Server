@@ -8,7 +8,10 @@ function chatMessage(socket, data) {
     let player = players.getClient(socket);
     let index = players.getSocketIndex(socket) + 1;
     let state = TownOfSalem.getGame().getState();
-    if(state == States.NIGHT) {
+    if(player.endLobby) {
+        players.sendToAll(u.code(172) + u.code(index) + data.slice(1) + u.code(0));
+    }
+    else if(state == States.NIGHT) {
         let role = player.getClassName();
         if(player.jailor) { //person being jailed
             player.jailor.write(u.code(6) + u.code(index) + data.slice(1) + u.code(0));
@@ -47,9 +50,10 @@ function chatMessage(socket, data) {
     }
     else if(state == States.LOBBY)
         players.sendToAll(u.code(6) + u.code(255) +  u.code(index) + data.slice(1) + u.code(0));
-    else if(state == States.NAMESELECTION || state == States.DISCUSSION || state == States.VOTING || state == States.JUDGEMENT)
+    else if(state == States.NAMESELECTION || state == States.DISCUSSION || state == States.VOTING || state == States.JUDGEMENT || state == States.SOMEONEWON) {
+        console.log('here');
         players.sendToAll(u.code(6) + u.code(index) + data.slice(1) + u.code(0));
-
+    }   
     else if(state == States.DEFENSE || state == States.LASTWORDS) {
         if(player == TownOfSalem.getGame().getTargetOnStand())
             players.sendToAll(u.code(6) + u.code(index) + data.slice(1) + u.code(0));

@@ -8,6 +8,15 @@ function userLeftGame(socket, data) {
     let state = TownOfSalem.getGame().getState();
     let unknown = (state == States.LOBBY) ? 2 : 1;
 
+    if(state == States.SOMEONEWON) {
+        if(data) {
+            players.sendToAllExcept(socket, u.code(5) + u.code(2) + u.code(unknown) + u.code(id + 1) + u.code(0));
+            players.getClient(socket).endLobby = true;
+            require('./SendEndLobbyInfo')(socket);
+            return;
+        }
+    }
+
     if(id >= 0) {
         players.sendToAllExcept(socket, u.code(5) + u.code(2) + u.code(unknown) + u.code(id + 1) + u.code(0));
     }

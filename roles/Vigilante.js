@@ -30,6 +30,7 @@ class Vigilante extends Player {
 		}
 	}
 	reset() {
+		super.reset();
 		this.attack = PowerStates.BASIC;
 		this.defense = PowerStates.NONE;
 	}

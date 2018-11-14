@@ -1,9 +1,10 @@
-- Send winning players
-- Implement end lobby screen
 - Reset timings
-- Reset player status every night
 - Test disconnect more
+- Implement death notes
+- stalemates
 
+- End lobby someone joined text
+- role wheel totally broken
 - order is wrong, don't care
 - 165 for pets not implemented (not important)
 - Town randoms done, doesn't handle unique roles but doesn't matter in classic
@@ -54,11 +55,3 @@ will = 5
 3000 - if will
 (5000)
 3000
-
-Vig killing town 158
-
-17 for will
-
-131 abilities
-
-m_serverMessages[143] = MafiaWasJailed;
