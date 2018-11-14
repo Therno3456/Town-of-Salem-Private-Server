@@ -14,7 +14,9 @@ function startLastWords() {
             require('./HasExecutionerWon')(p);
             require('./WasJesterLynched')(p);
             require('./WhoDiedAndHow')(p).then(function() {
-                require('./StartNightTransition')();
+                if(!require('./CheckWinners')()) {
+                    require('./StartNightTransition')();
+                }
             });
         }, 3000);
     }, 1000);

@@ -9,8 +9,6 @@ class Sheriff extends Player {
 		this.setFaction('TOWN');
 	}
 	role() {
-		this.attack = PowerStates.BASIC;
-		this.kill(5, this);
 		if(this.canPerformRole()) {
 			this.target.visit(this);
 			let role = this.target.getClassName();

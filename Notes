@@ -1,4 +1,7 @@
-- Implement win conditions
+- Send winning players
+- Implement end lobby screen
+- Reset timings
+- Reset player status every night
 - Test disconnect more
 
 - order is wrong, don't care

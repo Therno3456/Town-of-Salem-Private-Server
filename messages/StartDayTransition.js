@@ -14,7 +14,9 @@ function startDayTransition() {
     setTimeout(function() {
         require('./WhoDiedAndHow')().then(function() {
             require('./IntermediateActions')();
-            require('./StartDiscussion')();
+            if(!require('./CheckWinners')()) {
+                require('./StartDiscussion')();
+            }
         });
     }, 5000);
 }
