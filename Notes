@@ -1,11 +1,9 @@
-- Mafia promotions
-- Multiple executioners with same target wouldn't work
-- Implement random roles
 - Implement win conditions
 - Test disconnect more
 
 - order is wrong, don't care
- 165 for pets not implemented (not important)
+- 165 for pets not implemented (not important)
+- Town randoms done, doesn't handle unique roles but doesn't matter in classic
 
 priority order
 

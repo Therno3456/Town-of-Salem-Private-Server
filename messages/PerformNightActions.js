@@ -10,6 +10,7 @@ function performNightActions() {
         players[x].writeMultiple(players[x].getMessages());
     }
     TownOfSalem.getGame().setState(States.DAYTRANSITION); //set state here to stop messages from sending after night is done
+    require('./CheckMafiaPromotions')();
     setTimeout(function() {
         require('./StartDay')();
     }, 5000);

@@ -20,7 +20,7 @@ function userLeftGame(socket, data) {
     else if(id >= 0) {
         let client = players.getClient(socket);
         client.socket = null;
-        client.kill(6, this);
+        client.kill(6, client);
     }
     if(data) { 
         socket.write(u.code(40) + u.code(0));

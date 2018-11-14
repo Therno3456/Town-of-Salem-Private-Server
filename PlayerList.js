@@ -124,6 +124,7 @@ class PlayerList {
 	getIndex(index) {
 		return this.clients[index];
 	}
+	/*Returns the player with the given role if the player is alive.*/
 	getRole(role) {
 		for(var x=0;x<this.clients.length;x++) {
 			if(this.clients[x].getClassName() == role)
