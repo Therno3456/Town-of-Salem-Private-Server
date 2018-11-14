@@ -38,7 +38,7 @@ function getRole(index) {
 		case 16:
 			return 'Consigliere';
 		case 17:
-			return 'Consort';
+			return roles.Consort;
 		case 18:
 			return 'Disguiser';
 		case 19:
