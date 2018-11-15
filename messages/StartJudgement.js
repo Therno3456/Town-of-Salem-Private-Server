@@ -9,7 +9,7 @@ function startJudgement() {
     players.sendToAll(u.code(99) + u.code(0));
     setTimeout(function() {
         require('./SendJudgementVotes')();
-    }, 3000);
+    }, 20000);
 }
 
 module.exports = startJudgement;

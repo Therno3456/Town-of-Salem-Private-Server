@@ -96,7 +96,9 @@ class Player extends Client {
 		this.voteTarget = -1;
 	}
 	visit(visitor) {
-		this.visits.push(visitor);
+		if(this.jailor) {
+			this.visits.push(visitor);
+		}
 	}
 	setRoleBlocked(roleBlocker) {
 		let role = this.getClassName();

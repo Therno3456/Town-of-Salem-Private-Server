@@ -1,4 +1,5 @@
 const Player = require('../Player.js');
+const PowerStates = require('../PowerStates.js');
 
 class Drifter extends Player {
 	constructor(client) {

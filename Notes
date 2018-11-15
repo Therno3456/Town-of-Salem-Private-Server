@@ -9,6 +9,10 @@
 - 165 for pets not implemented (not important)
 - Town randoms done, doesn't handle unique roles but doesn't matter in classic
 
+Miscellaneous notes
+- Player does not visit is target was in jail
+- Doctor receives healed message is jailor was attacked by jailed SK
+
 priority order
 
 VETERAN - 0

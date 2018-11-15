@@ -8,7 +8,7 @@ function startDefense() {
     players.sendToAll(u.code(155) + u.code(0));
     setTimeout(function() {
         require('./StartJudgement')();
-    }, 5000);
+    }, 20000);
 }
 
 module.exports = startDefense;

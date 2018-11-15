@@ -16,7 +16,7 @@ function startNight() {
 
     setTimeout(function() {
         require('./PerformNightActions')();
-    }, 10000);
+    }, 30000);
 }
 
 module.exports = startNight;

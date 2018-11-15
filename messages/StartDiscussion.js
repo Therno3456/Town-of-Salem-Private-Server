@@ -12,7 +12,7 @@ function startDiscussion() {
     players.sendToAll(u.code(96) + u.code(0));
     setTimeout(function() {
         require('./StartVoting')();
-    }, 1000);
+    }, 45000);
 }
 
 module.exports = startDiscussion;

@@ -10,7 +10,7 @@ function startFirstDay() {
     require('./CheckWinners')(); //TEST
     setTimeout(function() {
         StartNightTransition();
-    }, 5000);
+    }, 15000);
 }
 
 module.exports = startFirstDay;

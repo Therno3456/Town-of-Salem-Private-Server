@@ -1,5 +1,6 @@
 const Player = require('../Player.js');
 const u = require('../Utilities.js');
+const PowerStates = require('../PowerStates.js');
 
 class Investigator extends Player {
 	constructor(client) {

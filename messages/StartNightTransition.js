@@ -7,7 +7,7 @@ function startNightTransition() {
     players.sendToAll(u.code(145) + u.code(0));
     setTimeout(function() {
         StartNight();
-    }, 1000);
+    }, 5000);
 }
 
 module.exports = startNightTransition;

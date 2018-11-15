@@ -12,7 +12,7 @@ function startVoting() {
         if(time == 0) {
             require('./StartNightTransition')();
         }
-    }, 1000)
+    }, 1000) //decrement each second to withhold time between each lynch
 }
 
 module.exports = startVoting;
