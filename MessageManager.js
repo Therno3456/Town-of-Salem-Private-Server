@@ -12,6 +12,7 @@ const UserVotedInnocent = require('./messages/UserVotedInnocent.js');
 const WhisperMessage = require('./messages/WhisperMessage.js');
 const UserLeftEndGameLobby = require('./messages/UserLeftEndGameLobby.js');
 const UpdateWill = require('./messages/UpdateWill.js');
+const SystemCommand = require('./messages/SystemCommand.js');
 
 class MessageManager {
     constructor() {
@@ -30,6 +31,7 @@ class MessageManager {
         this.serverMessages[17] = UpdateWill;
         this.serverMessages[19] = MafiaNightAction;
         this.serverMessages[21] = UserChoseName;
+        this.serverMessages[24] = SystemCommand;
         this.serverMessages[30] = CreateLobby;
         this.serverMessages[39] = UserLeftGame;
         this.serverMessages[63] = UserLeftEndGameLobby;

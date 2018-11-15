@@ -6,7 +6,8 @@ function charactersChosen() {
     let numberOfPlayers = players.numberOfPlayers();
     let message = u.code(153);
     for(var x=0;x<numberOfPlayers;x++) {
-        message += u.code(x+1) + u.code(1);
+        let r = u.randomInt(1, 4);
+        message += u.code(x+1) + u.code(r);
     }
     message += u.code(0);
     players.sendToAll(message);

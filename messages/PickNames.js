@@ -19,7 +19,7 @@ function pickNames() {
         require('./TellRoleList')();
         setTimeout(function() {
             require('./FirstDayTransition')();
-        }, 500);
+        }, 1000);
     }, 1000);
 }
 

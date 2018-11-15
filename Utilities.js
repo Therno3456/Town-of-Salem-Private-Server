@@ -20,6 +20,10 @@ class Utilities {
     static random(array) {
         return array[Math.floor(Math.random()*array.length)];
     }
+    //max is exclusive
+    static randomInt(min, max) {
+        return Math.random() * (max - min) + min;
+    }
 }
 
 module.exports = Utilities;

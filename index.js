@@ -68,12 +68,12 @@ function login(data, socket) {
 	socket.write('X11*32' + String.fromCharCode(0), 'binary'); //???
 	socket.write('Ã' + String.fromCharCode(0), 'binary'); //???
 	socket.write('31550053' + String.fromCharCode(0), 'binary'); //???
-	socket.write('40,2,7,15,55,59,91,126,129,132,133,137,145,151,160,179,201,202,215,222' + String.fromCharCode(0), 'binary'); //???
-	socket.write('+0,1,2,3,4,5,64' + String.fromCharCode(0), 'binary'); //???
-	socket.write(',0,1,2,3,4' + String.fromCharCode(0), 'binary'); //???
-	socket.write('-0,1,2' + String.fromCharCode(0), 'binary'); //???
+	socket.write('40,2,7,15,55,59,91,126,129,132,133,137,145,151,160,179,201,202,215,222' + String.fromCharCode(0), 'binary'); //earned achievements
+	socket.write('+0,1,2,3,4,5,64' + String.fromCharCode(0), 'binary'); //purchased characters
+	socket.write(',0,1,2,3,4' + String.fromCharCode(0), 'binary'); //purchased houses
+	socket.write('-0,1,2' + String.fromCharCode(0), 'binary'); //purchased backgrounds
 	socket.write('' + username + ',1281354,,1' + String.fromCharCode(0), 'binary'); //friends list
-	socket.write('50' + String.fromCharCode(0), 'binary'); //???
+	socket.write('50,36,37' + String.fromCharCode(0), 'binary'); //lobby icons
 	socket.write('60' + String.fromCharCode(0), 'binary'); //???
     socket.write('V1' + String.fromCharCode(0), 'binary'); //???
     socket.write(String.fromCharCode(28) + username + '*lots*lotss' + String.fromCharCode(0));

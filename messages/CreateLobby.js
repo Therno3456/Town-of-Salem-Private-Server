@@ -18,13 +18,13 @@ function joinLobby(socket) {
 
 	for(var x=0;x<clients.length;x++) {
 		if(x == 0)
-			socket.write(u.code(4) + u.code(2) + u.code(1) + clients[x].username + '*' + u.code(x+1) + u.code(1) + u.code(0));
+			socket.write(u.code(4) + u.code(2) + u.code(1) + clients[x].username + '*' + u.code(x+1) + u.code(35) + u.code(0));
 		else
 			socket.write(u.code(4) + u.code(1) + u.code(1) + clients[x].username + '*' + u.code(x+1) + u.code(1) + u.code(0));
 	}
 	setTimeout(function() {
 		if(!TownOfSalem.dfgfdgdf) {
-			//players.fakePlayers(); //fake players
+			players.fakePlayers(); //fake players
 			TownOfSalem.dfgfdgdf = true;
 		}
 	}, 200);

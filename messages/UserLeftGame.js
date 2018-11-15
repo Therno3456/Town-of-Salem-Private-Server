@@ -22,9 +22,11 @@ function userLeftGame(socket, data) {
     }
     if(state == States.LOBBY && data) {
         players.removePlayer(socket);
-        let newHost = u.random(players.getClients());
-        newHost.write(u.code(3) + u.code(0));
-        players.sendToAll(u.code(13) + u.code(players.getSocketIndex(newHost.socket) + 1) + u.code(0));
+        if(players.numberOfPlayers() != 0) {
+            let newHost = u.random(players.getClients());
+            newHost.write(u.code(3) + u.code(0));
+            players.sendToAll(u.code(13) + u.code(players.getSocketIndex(newHost.socket) + 1) + u.code(0));
+        }
     }
     else if(id >= 0) {
         let client = players.getClient(socket);

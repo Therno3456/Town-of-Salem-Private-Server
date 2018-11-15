@@ -4,7 +4,7 @@ const u = require('../Utilities.js');
 function namesAndPositions() {
     let players = TownOfSalem.getGame().getPlayerList();
     let clients = players.getClients();
-    var names = ['blue', 'Jonathan Corwin', 'hay', 'Edward Bishop', 'Samuel Parris', 'Q', 'Wut', 'X', 'W', 'A', 'potato', 'smart potato', 'B', 'carl', 'big man']; 
+    var names = ['red', 'Edward Bishop', 'what', 'Squirtle', 'Pikachu', 'dirty dan', 'spongebob', 'Q', 'Y', 'potato', 'Z', 'mom', 'big boi', 'purple', 'seven']; 
     for(var x=0;x<clients.length;x++) { //for each client
         for(var y=0;y<clients.length;y++) { //send each client to them
             clients[y].ign = names[y];
