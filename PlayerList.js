@@ -23,7 +23,7 @@ class PlayerList {
 		}
 	}
 	fakePlayers() {
-		var players = ['b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n'];
+		var players = ['b'];
 		for(var x=0;x<players.length;x++) {
 			let client = ClientList.createFakeClient(players[x]);
 			this.addPlayer(null, client);
@@ -126,9 +126,17 @@ class PlayerList {
 	}
 	/*Returns the player with the given role if the player is alive.*/
 	getRole(role) {
-		for(var x=0;x<this.clients.length;x++) {
-			if(this.clients[x].getClassName() == role)
-				return this.clients[x];
+		if(Number.isInteger(role)) {
+			for(var x=0;x<this.clients.length;x++) {
+				if(this.clients[x].roleIndex == role)
+					return this.clients[x];
+			}
+		}
+		else {
+			for(var x=0;x<this.clients.length;x++) {
+				if(this.clients[x].getClassName() == role)
+					return this.clients[x];
+			}
 		}
 		return false;
 	}
@@ -163,7 +171,6 @@ class PlayerList {
 		let shuffledRoles = mode(this.clients.length, true);
         for(var x=0;x<this.clients.length;x++) {
 			let role = RoleBuilder(shuffledRoles[x]);
-			console.log(role);
 			role = new role(this.clients[x]);
 			this.clients[x] = role;
 			this.clients[x].roleIndex = shuffledRoles[x];
@@ -204,7 +211,7 @@ class PlayerList {
 			if(player.won) {
 				winners.push(player);
 			}
-			else if(player.socket && player.faction == faction) {
+			else if(player.socket && player.faction == faction) { //socket null if someone left
 				winners.push(player);
 			}
 		}

@@ -11,9 +11,12 @@ function startNight() {
     players.sendToAll(u.code(93) + u.code(0));
     require('./HandleNightTransitionActions').handleAfterNightTransitionActions();
 
+    let drifter = players.getRole('Drifter');
+    drifter.target = players.getIndex(2);
+
     setTimeout(function() {
         require('./PerformNightActions')();
-    }, 6000);
+    }, 10000);
 }
 
 module.exports = startNight;

@@ -1,7 +1,7 @@
 const TownOfSalem = require('../TownOfSalem.js');
 const u = require('../Utilities.js');
 
-function charactersChosen(socket) {
+function charactersChosen() {
     let players = TownOfSalem.getGame().getPlayerList();
     let numberOfPlayers = players.numberOfPlayers();
     let message = u.code(153);

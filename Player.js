@@ -37,20 +37,25 @@ class Player extends Client {
 	}
 	/*NYI*/
 	canPerformRole(abilityType) {
-		let role = this.getClassName();
 		if(this.roleblocked) {
 			this.addMessage(u.code(19) + u.code(9) + u.code(0));
 		}
-		else if(!this.target) 
+		else if(!this.target) {
+			this.addMessage(u.code(19) + u.code(109) + u.code(0));
 			return false;
-		else if(this.target.jailed) {
+		}
+		else if(this.target.jailor) { //target in jail
 			if(abilityType == AbilityType.ROLEBLOCK) {
-				this.target.addMessage(u.code(19) + u.code(8) + u.code(0));
+				this.target.addMessage(u.code(19) + u.code(8) + u.code(0)); //someone tried to roleblock you but you were in jail
+				this.addMessage(u.code(19) + u.code(165) + u.code(0));
 			}
 			else if(abilityType == AbilityType.ATTACK) {
-				this.target.addMessage(u.code(19) + u.code(14) + u.code(0));
+				this.target.addMessage(u.code(19) + u.code(14) + u.code(0)); //someone tried to attack you but you were in jail
+				this.addMessage(u.code(19) + u.code(166) + u.code(0)); //You could not attack your target because they were in jail
 			}
-			this.addMessage(u.code(19) + u.code(165) + u.code(0));
+			else {
+				this.addMessage(u.code(19) + u.code(165) + u.code(0)); //Your ability failed because your target was in jail
+			}
 		}
 		else {
 			return true;
@@ -112,13 +117,14 @@ class Player extends Client {
 		this.healers.push(healer);
 	}
 	kill(who, attacker) {
+		//this is person being killed
 		let role = attacker.getClassName();
 		if(this.healers.length && role != 'Jester') { //prevent healing jester haunt and vig guilt
 			/*Targets should get multiple messages if they're attacked multiple times*/
 			if(role == 'Vigilante' && attacker.killedTown) {
 				return;
 			}
-			this.target.addMessage(u.code(19) + u.code(16) + u.code(0)); //You were attacked but someone nursed you back to health!
+			this.addMessage(u.code(19) + u.code(16) + u.code(0)); //You were attacked but someone nursed you back to health!
 			/*Doctors only get 1 notification that their target was attacked*/
 			if(!this.healed) {
 				for(var x=0;x<this.healers.length;x++) {
@@ -129,9 +135,16 @@ class Player extends Client {
 		}
 		else if(attacker.attack > this.defense || who == 6) { //6 is suicide
 			this.killers.push(who);
+			switch(who) {
+				case 3:
+					this.addMessage(u.code(19) + u.code(17) + u.code(0)); //you were attacked by a member of the mafia!
+					break;
+				case 5:
+					this.addMessage(u.code(19) + u.code(18) + u.code(0)); //you were attacked by a member of the mafia!
+					break
+			}
 			if(!this.dead) {
 				this.dead = true;
-				this.addMessage(u.code(106) + u.code(0));
 			}
 		}
 		else {

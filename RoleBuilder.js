@@ -16,7 +16,7 @@ function getRole(index) {
 		case 5:
 			return roles.Lookout;
 		case 6:
-			return 'Mayor';
+			return roles.Mayor;
 		case 7:
 			return roles.Medium;
 		case 8:
