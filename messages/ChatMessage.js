@@ -13,12 +13,12 @@ function chatMessage(socket, data) {
     }
     else if(state == States.NIGHT) {
         let role = player.getClassName();
-        if(player.jailor) { //person being jailed
-            player.jailor.write(u.code(6) + u.code(index) + data.slice(1) + u.code(0));
-            player.write(u.code(6) + u.code(index) + data.slice(1) + u.code(0));
-        }
         if(player.seancer) { //person being seanced
             player.seancer.write(u.code(6) + u.code(index) + data.slice(1) + u.code(0));
+            player.write(u.code(6) + u.code(index) + data.slice(1) + u.code(0));
+        }
+        if(player.jailor) { //person being jailed
+            player.jailor.write(u.code(6) + u.code(index) + data.slice(1) + u.code(0));
             player.write(u.code(6) + u.code(index) + data.slice(1) + u.code(0));
         }
         else if(player.isMafiaRole()) { //send to mafia members only

@@ -15,7 +15,7 @@ class Player extends Client {
 		this.framed = false;
 		this.roleblocked = false;
 		this.voteTarget = -1;
-		this.voteCount = 9; //3 for mayor
+		this.voteCount = 1; //3 for mayor
 		this.priority = 9;
 		this.attack = PowerStates.NONE;
 		this.defense = PowerStates.NONE;
@@ -41,7 +41,9 @@ class Player extends Client {
 			this.addMessage(u.code(19) + u.code(9) + u.code(0));
 		}
 		else if(!this.target) {
-			this.addMessage(u.code(19) + u.code(109) + u.code(0));
+			if(!this.jailor) {
+				this.addMessage(u.code(19) + u.code(109) + u.code(0));
+			}
 			return false;
 		}
 		else if(this.target.jailor) { //target in jail
