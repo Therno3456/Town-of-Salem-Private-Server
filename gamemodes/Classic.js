@@ -6,7 +6,7 @@ const u = require('../Utilities.js');
 //               Roles.GODFATHER, Roles.CONSORT, Roles.EXECUTIONER, Roles.ESCORT, Roles.MAFIOSO,
 //               Roles.LOOKOUT, Roles.SERIALKILLER, Roles.TOWN_KILLING, Roles.JESTER, Roles.RANDOM_TOWN];
 
-var classic = [Roles.JAILOR, Roles.MAFIOSO, Roles.SERIALKILLER, Roles.JAILOR, Roles.MEDIUM,
+var classic = [Roles.DRIFTER, Roles.MAFIOSO, Roles.SERIALKILLER, Roles.JAILOR, Roles.MEDIUM,
                 Roles.GODFATHER, Roles.FRAMER, Roles.EXECUTIONER, Roles.ESCORT, Roles.MAFIOSO,
                 Roles.LOOKOUT, Roles.SERIALKILLER, Roles.TOWN_KILLING, Roles.DRIFTER, Roles.RANDOM_TOWN];
 

@@ -51,14 +51,13 @@ function containsRole(list, roleName) {
 }
 
 function convertToMafioso(players, mafia) {
-    let clients = players.getClients();
-    for(var x=0;x<clients.length;x++) {
-        let role = clients[x].getClassName();
+    for(var x=0;x<mafia.length;x++) {
+        let role = mafia[x].getClassName();
         if(role != 'Godfather' && role != 'Mafioso') {
-            players.switchRole(clients[x], roles.MAFIOSO);
-            clients[x].write(u.code(138) + u.code(0)); //mafioso promoted to godfather
+            players.switchRole(mafia[x], roles.MAFIOSO);
+            mafia[x].write(u.code(138) + u.code(0)); //mafioso promoted to godfather
             for(var y=0;y<mafia.length;y++) {
-                mafia[y].write(u.code(139) + u.code(clients[x].position + 1) + u.code(0));
+                mafia[y].write(u.code(139) + u.code(mafia[x].position + 1) + u.code(0));
             }
             return;
         }
