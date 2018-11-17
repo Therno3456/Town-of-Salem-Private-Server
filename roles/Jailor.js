@@ -34,7 +34,7 @@ class Jailor extends Player {
 	}
 	reset() {
 		super.reset();
-		this.jailTarget = -1;
+		this.jailTarget = null;
 		this.attack = PowerStates.POWERFUL;
 		this.defense = PowerStates.NONE;
 	}

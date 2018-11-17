@@ -10,6 +10,7 @@ var server = net.createServer(function(socket) {
 		require('./messages/UserLeftGame')(socket);
 	});
     socket.on('data', function(data) {
+		if (data == '<policy-file-request/>\0') socket.end('<cross-domain-policy><allow-access-from domain="*" to-ports="*" /></cross-domain-policy>');
         data = data.toString();
         data = handleMessage(data);
         for(var x=0;x<data.length;x++) {

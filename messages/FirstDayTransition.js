@@ -9,7 +9,7 @@ function firstDayTransition() {
     players.sendToAll(u.code(151) + u.code(0));
     setTimeout(function() {
         StartFirstDay();
-    }, 5000);
+    }, 1000);
 }
 
 module.exports = firstDayTransition;

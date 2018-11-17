@@ -23,7 +23,7 @@ class PlayerList {
 		}
 	}
 	fakePlayers() {
-		var players = ['b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'z', 'z', 'z', 'z'];
+		var players = ['b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'z', 'z', 'z'];
 		for(var x=0;x<players.length;x++) {
 			let client = ClientList.createFakeClient(players[x]);
 			this.addPlayer(null, client);

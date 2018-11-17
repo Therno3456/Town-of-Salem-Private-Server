@@ -5,7 +5,7 @@ const State = require('../States.js');
 function startNight() {
     let players = TownOfSalem.getGame().getPlayerList();
     TownOfSalem.getGame().setState(State.NIGHT);
-
+    players.reset();
     //perform night actions
     require('./HandleNightTransitionActions').handleBeforeNightTransitionActions();
     players.sendToAll(u.code(93) + u.code(0));

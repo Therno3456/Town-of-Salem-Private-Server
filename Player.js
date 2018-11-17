@@ -73,17 +73,7 @@ class Player extends Client {
 	}
 	/*Returns whether a role is part of the mafia or not. Includes godfather while isMafia doesn't.*/
 	isMafiaRole() {
-		let role = this.getClassName();
-		switch(role) {
-			case 'Mafioso':
-			case 'Godfather':
-			case 'Framer':
-			case 'Blackmailer':
-			case 'Consigliere':
-			case 'Janitor':
-			case 'Forger':
-				return true;
-		}
+		return this.mafia;
 	}
 	reset() {
 		this.messageQueue = [];

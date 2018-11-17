@@ -24,11 +24,10 @@ function joinLobby(socket) {
 	}
 	setTimeout(function() {
 		if(!TownOfSalem.dfgfdgdf) {
-			players.fakePlayers(); //fake players
+			//players.fakePlayers(); //fake players
 			TownOfSalem.dfgfdgdf = true;
 		}
 	}, 200);
-	
 }
 
 module.exports = joinLobby;
