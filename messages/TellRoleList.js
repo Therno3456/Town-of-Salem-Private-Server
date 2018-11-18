@@ -1,6 +1,6 @@
 const TownOfSalem = require('../TownOfSalem.js');
 const u = require('../Utilities.js');
-const mode = require('../gamemodes/Classic.js');
+const mode = require('../gamemodes/Classic.js').roleList;
 
 function tellRoleList() {
     let players = TownOfSalem.getGame().getPlayerList();

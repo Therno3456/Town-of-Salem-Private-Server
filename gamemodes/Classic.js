@@ -15,12 +15,29 @@ const random = [Roles.RANDOM_TOWN, Roles.TOWN_INVESTIGATIVE, Roles.TOWN_PROTECTI
 
 var parsedList = parseRandoms();
 
-function roleList(numberOfPlayers, parsed = false) {
-    if(parsed) {
-        return parsedList.slice(0, numberOfPlayers);
-    }
-    else {
-        return classic.slice(0, numberOfPlayers);
+module.exports = {
+    roleList(numberOfPlayers, parsed = false) {
+        if(parsed) {
+            return parsedList.slice(0, numberOfPlayers);
+        }
+        else {
+            return classic.slice(0, numberOfPlayers);
+        }
+    },
+    /*I hate this whole thing here*/
+    getNames() {
+        let names = [];
+        let keys = Object.keys(Roles);
+        let values = Object.values(Roles);
+        for(var x=0;x<classic.length;x++) {
+            for(var y=0;y<values.length;y++) {
+                if(values[y] == classic[x]) {
+                    names.push(keys[y]);
+                    break;
+                }
+            }
+        }
+        return names;
     }
 }
 
@@ -57,5 +74,3 @@ function getRandomRole(role) {
             return u.random(roles);
     }
 }
-
-module.exports = roleList;

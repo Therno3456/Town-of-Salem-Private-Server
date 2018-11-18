@@ -1,12 +1,14 @@
 const net = require('net');
 const MessageManager = require('./MessageManager.js');
 const ClientList = require('./ClientList.js');
+const mode = require('./gamemodes/Classic.js').getNames;
 const port = 3600;
+var socket = require('socket.io-client')('http://localhost:3000');
 
 var tempMessage = 0;
 
 var server = net.createServer(function(socket) {
-	socket.on('close', function(a) { //disconnect event
+	socket.on('close', function() { //disconnect event
 		require('./messages/UserLeftGame')(socket);
 	});
     socket.on('data', function(data) {
@@ -35,6 +37,7 @@ var server = net.createServer(function(socket) {
 
 server.listen(port, '127.0.0.1');
 console.log("Listening in port: " + port);
+socket.emit('createServer', mode());
 
 function handleMessage(serverMessage) {
 	let messageArray = [];

@@ -1,5 +1,5 @@
 const ClientList = require('./ClientList.js');
-const mode = require('./gamemodes/Classic');
+const mode = require('./gamemodes/Classic').roleList;
 const RoleBuilder = require('./RoleBuilder.js');
 const Factions = require('./Factions.js');
 const u = require('./Utilities.js');

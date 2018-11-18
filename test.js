@@ -1,8 +1,3 @@
-const Client = require('./Client.js');
-const Veteran = require('./roles/Veteran.js');
-const RoleBuilder = require('./RoleBuilder.js');
+const classic = require('./gamemodes/Classic.js').getNames;
 
-var x = new Client(0);
-
-let a = new Veteran(x);
-a.visit();
+let a = classic();
