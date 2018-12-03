@@ -9,7 +9,11 @@ function chatMessage(socket, data) {
     let index = players.getSocketIndex(socket) + 1;
     let state = TownOfSalem.getGame().getState();
     let str = data.slice(1);
-    let role = player.getClassName();
+    let role = 0;
+
+    if(state != States.LOBBY) {
+        role = player.getClassName();
+    }
 
     if(player.possessed) {
         player.write(u.code(19) + u.code(187) + u.code(0));

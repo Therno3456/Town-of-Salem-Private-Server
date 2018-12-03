@@ -3,7 +3,7 @@ const MessageManager = require('./MessageManager.js');
 const ClientList = require('./ClientList.js');
 const mode = require('./gamemodes/Classic.js').getNames;
 const port = 3600;
-var socket = require('socket.io-client')('http://localhost:3000');
+var socket = require('socket.io-client')('http://165.227.19.125:3000');
 
 var tempMessage = 0;
 
@@ -35,7 +35,7 @@ var server = net.createServer(function(socket) {
 	});
 });
 
-server.listen(port, '127.0.0.1');
+server.listen(port, '0.0.0.0');
 console.log("Listening in port: " + port);
 socket.emit('createServer', mode());
 
