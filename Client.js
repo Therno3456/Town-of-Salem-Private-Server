@@ -1,7 +1,8 @@
 class Client {
-	constructor(socket, username) {
+	constructor(socket, username, ign) {
 		this.socket = socket;
 		this.username = username;
+		this.ign = ign;
 	}
 	write(message) {
 		if(this.socket)

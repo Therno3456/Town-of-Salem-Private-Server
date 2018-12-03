@@ -20,7 +20,7 @@ function pickNames() {
         setTimeout(function() {
             require('./FirstDayTransition')();
         }, 1000);
-    }, 1000);
+    }, 5000);
 }
 
 module.exports = pickNames;

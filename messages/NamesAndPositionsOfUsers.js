@@ -4,10 +4,14 @@ const u = require('../Utilities.js');
 function namesAndPositions() {
     let players = TownOfSalem.getGame().getPlayerList();
     let clients = players.getClients();
-    var names = ['red', 'Edward Bishop', 'what', 'Squirtle', 'Pikachu', 'dirty dan', 'spongebob', 'Q', 'Y', 'potato', 'Z', 'mom', 'big boi', 'purple', 'seven']; 
+    const defaultNames = ['Cotton Mather', 'Deodat Lawson', 'Edward Bishop', 'Giles Corey', 'James Bayley',
+    'James Russel', 'John Hawthorne', 'John Proctor', 'John Willard', 'Jonathan Corwin', 'Samuel Parris',
+    'Samuel Sewall', 'Thomas Danforth', 'William Hobbs', 'William Phips'];
     for(var x=0;x<clients.length;x++) { //for each client
         for(var y=0;y<clients.length;y++) { //send each client to them
-            clients[y].ign = names[y];
+            if(!clients[y].ign) {
+                clients[y].ign = u.random(defaultNames);
+            }
             clients[x].write(u.code(91) + u.code(y+1) + clients[y].ign + u.code(0));
         }
     }

@@ -6,7 +6,7 @@ const PowerStates = require('./PowerStates.js');
 
 class Player extends Client {
 	constructor(client) {
-		super(client.socket, client.username);
+		super(client.socket, client.username, client.ign);
 		this.messageQueue = [];
 		this.visits = [];
 		this.killers = [];
