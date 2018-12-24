@@ -20,9 +20,9 @@ function userLeftGame(socket, data) {
     if(id >= 0) {
         players.sendToAllExcept(socket, u.code(5) + u.code(2) + u.code(unknown) + u.code(id + 1) + u.code(0));
     }
-    if(state == States.LOBBY && data) {
+    if(state == States.LOBBY || state == States.NAMESELECTION) {
         players.removePlayer(socket);
-        if(players.numberOfPlayers() != 0) {
+        if(players.numberOfPlayers() != 0 && state != States.NAMESELECTION) {
             let newHost = u.random(players.getClients());
             newHost.write(u.code(3) + u.code(0));
             players.sendToAll(u.code(13) + u.code(players.getSocketIndex(newHost.socket) + 1) + u.code(0));

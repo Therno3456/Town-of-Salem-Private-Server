@@ -1,12 +1,7 @@
 const Roles = require('../Roles.js');
 const u = require('../Utilities.js');
 
-/*Role list to send to each player*/
-//var classic = [Roles.TOWN_INVESTIGATIVE, Roles.DOCTOR, Roles.TOWN_INVESTIGATIVE, Roles.JAILOR, Roles.DRIFTER,
-//               Roles.GODFATHER, Roles.CONSORT, Roles.EXECUTIONER, Roles.ESCORT, Roles.MAFIOSO,
-//               Roles.LOOKOUT, Roles.SERIALKILLER, Roles.TOWN_KILLING, Roles.JESTER, Roles.RANDOM_TOWN];
-
-var classic = [Roles.SHERIFF, Roles.VENTRILOQUIST, Roles.INVESTIGATOR, Roles.JAILOR, Roles.MEDIUM,
+var classic = [Roles.SHERIFF, Roles.SHERIFF, Roles.INVESTIGATOR, Roles.JAILOR, Roles.MEDIUM,
                 Roles.GODFATHER, Roles.FRAMER, Roles.EXECUTIONER, Roles.ESCORT, Roles.MAFIOSO,
                 Roles.LOOKOUT, Roles.SERIALKILLER, Roles.TOWN_KILLING, Roles.JESTER, Roles.MAFIOSO];
 
@@ -24,7 +19,7 @@ module.exports = {
             return classic.slice(0, numberOfPlayers);
         }
     },
-    /*I hate this whole thing here*/
+    /*I hate this whole thing here but it works*/
     getNames() {
         let names = [];
         let keys = Object.keys(Roles);
@@ -57,8 +52,7 @@ function parseRandoms() {
 function getRandomRole(role) {
     switch(role) {
         case Roles.RANDOM_TOWN:
-            //var roles = [Roles.SHERIFF, Roles.DOCTOR, Roles.INVESTIGATOR, Roles.JAILOR, Roles.ESCORT, Roles.MEDIUM, Roles.LOOKOUT, Roles.VIGILANTE];
-            var roles = [Roles.MAYOR];
+            var roles = [Roles.SHERIFF, Roles.DOCTOR, Roles.INVESTIGATOR, Roles.JAILOR, Roles.ESCORT, Roles.MEDIUM, Roles.LOOKOUT, Roles.VIGILANTE];
             return u.random(roles);
         case Roles.TOWN_INVESTIGATIVE:
             var roles = [Roles.SHERIFF, Roles.INVESTIGATOR, Roles.LOOKOUT];

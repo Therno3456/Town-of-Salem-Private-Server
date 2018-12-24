@@ -18,7 +18,7 @@ function startDayTransition() {
                 require('./StartDiscussion')();
             }
         });
-    }, 1000);
+    }, 5000);
 }
 
 module.exports = startDayTransition;

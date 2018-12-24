@@ -11,8 +11,20 @@ function chatMessage(socket, data) {
     let str = data.slice(1);
     let role = 0;
 
-    if(state != States.LOBBY) {
+    if(str == '/start') {
+        require('./StartGame')();
+    }
+
+    if(state != States.LOBBY && state != States.NAMESELECTION) {
         role = player.getClassName();
+    }
+
+    if(player.endLobby) {
+        players.sendToAll(u.code(172) + u.code(index) + str + u.code(0));
+    }
+
+    if (state == States.SOMEONEWON) {
+        players.sendToAll(u.code(6) + u.code(index) + str + u.code(0));
     }
 
     if(player.possessed) {
@@ -24,10 +36,7 @@ function chatMessage(socket, data) {
         index = player.target.position + 1;
         str = str.slice(3);
     }
-
-    if(player.endLobby) {
-        players.sendToAll(u.code(172) + u.code(index) + str + u.code(0));
-    }
+ 
     else if(state == States.NIGHT) {
         let role = player.getClassName();
         if(player.seancer) { //person being seanced
@@ -67,8 +76,7 @@ function chatMessage(socket, data) {
     }
     else if(state == States.LOBBY)
         players.sendToAll(u.code(6) + u.code(255) +  u.code(index) + str + u.code(0));
-    else if(state == States.NAMESELECTION || state == States.DISCUSSION || state == States.VOTING || state == States.JUDGEMENT || state == States.SOMEONEWON) {
-        console.log('here');
+    else if(state == States.NAMESELECTION || state == States.DISCUSSION || state == States.VOTING || state == States.JUDGEMENT) {
         players.sendToAll(u.code(6) + u.code(index) + str + u.code(0));
     }   
     else if(state == States.DEFENSE || state == States.LASTWORDS) {

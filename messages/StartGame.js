@@ -7,7 +7,7 @@ function startGame(socket) {
     players.sendToAll(u.code(11) + u.code(0));
     setTimeout(function() {
         PickNames();
-    }, 100);
+    }, 10000);
 }
 
 module.exports = startGame;

@@ -3,6 +3,9 @@ const u = require('../Utilities.js');
 
 function joinLobby(socket) {
 	let players = TownOfSalem.getGame().getPlayerList();
+	if(players.numberOfPlayers >= 15) { //don't let more than 15 people in
+		return;
+	}
 	players.addPlayer(socket);
 	let clients = players.getClients();
 	let personJoining = players.getUsername(socket); //username of player joining
@@ -23,7 +26,7 @@ function joinLobby(socket) {
 			socket.write(u.code(4) + u.code(1) + u.code(1) + clients[x].username + '*' + u.code(x+1) + u.code(1) + u.code(0));
 	}
 	setTimeout(function() {
-		if(!TownOfSalem.dfgfdgdf) {
+		if(!TownOfSalem.dfgfdgdf) { //lol idk something for testing
 			//players.fakePlayers(); //fake players
 			TownOfSalem.dfgfdgdf = true;
 		}
