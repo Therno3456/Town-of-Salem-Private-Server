@@ -1,11 +1,8 @@
 - Implement death notes
 - jailor still gets "attacked by serial killer" if they jailed one
 - always lose at end of game
-- fix end game chat
-
 - End lobby someone joined text
 - role wheel broken with random roles
-- order is wrong, don't care
 - 165 for pets not implemented (not important)
 - Town randoms done, doesn't handle unique roles but doesn't matter in classic
 
@@ -54,6 +51,7 @@ Vigilante - done
 _loc6_.StartKilledByMessageTimer(3000);
 will = 5
 
+Death timings
 3000
 3000
 3000 - if will

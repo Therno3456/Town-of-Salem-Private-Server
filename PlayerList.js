@@ -164,10 +164,10 @@ class PlayerList {
 		}
 	}
 	randomizeUsers() {
-		console.log("NAMES ARE NOT BEING SHUFFLED");
-		//this.clients = u.shuffle(this.clients);
-		//let shuffledRoles = u.shuffle(mode(this.clients.length));
-		console.log("ROLES ARE NOT BEING SHUFFLED");
+		//console.log("NAMES ARE NOT BEING SHUFFLED");
+		this.clients = u.shuffle(this.clients);
+		let shuffledRoles = u.shuffle(mode(this.clients.length));
+		//console.log("ROLES ARE NOT BEING SHUFFLED");
 		let shuffledRoles = mode(this.clients.length, true);
         for(var x=0;x<this.clients.length;x++) {
 			let role = RoleBuilder(shuffledRoles[x]);
@@ -175,9 +175,6 @@ class PlayerList {
 			this.clients[x] = role;
 			this.clients[x].roleIndex = shuffledRoles[x];
 			this.clients[x].position = x;
-			//TEST CODE
-			//this.clients[x].will = 'HELLO';
-			//END TEST CODE
 		}
 		this.sortRoleOrder();
 	}
